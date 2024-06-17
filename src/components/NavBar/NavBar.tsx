@@ -39,10 +39,11 @@ const NavBar = () => {
           ): (
             <Button color='inherit' component={Link} to={`/profile/:id`} className={`classes?.linkButton`} onClick={() => {}}>
               {!isMobile && <>My Movies &nbsp;</>}
-              <Avatar style={{width: 30, height: 30}}/>
+              <Avatar style={{width: 30, height: 30}} alt='Profile' src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png'/>
             </Button>
           )}
         </div>
+        {isMobile && 'Search...'}
       </Toolbar>
       </AppBar> 
     </>
