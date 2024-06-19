@@ -10,7 +10,7 @@ const DRAWER_WIDTH = 240
 
 
 const NavBar = () => {
-  const isMobile = useMediaQuery('(max-width:600px)')
+  const isMobile = useMediaQuery('(max-width: 600px)')
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState<boolean>(false)
   
@@ -56,7 +56,7 @@ const NavBar = () => {
       </Toolbar>
       </AppBar> 
       <div>
-        {/* <nav style={classes.drawer}>
+        <nav style={classes.drawer}>
             {isMobile ? (
               <Drawer variant="temporary" anchor='right' open={mobileOpen} ModalProps={{keepMounted: true}} onClose={() => setMobileOpen(prev => !prev)}>
                 
@@ -68,7 +68,7 @@ const NavBar = () => {
                 <Sidebar setMobileOpen={setMobileOpen} />
               </Drawer>
             )}
-        </nav> */}
+        </nav>
       </div>
     </>
   )
