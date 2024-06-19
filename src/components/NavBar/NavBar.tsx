@@ -56,7 +56,7 @@ const NavBar = () => {
       </Toolbar>
       </AppBar> 
       <div>
-        <nav style={classes.drawer}>
+        {/* <nav style={classes.drawer}>
             {isMobile ? (
               <Drawer variant="temporary" anchor='right' open={mobileOpen} ModalProps={{keepMounted: true}} onClose={() => setMobileOpen(prev => !prev)}>
                 
@@ -68,7 +68,7 @@ const NavBar = () => {
                 <Sidebar setMobileOpen={setMobileOpen} />
               </Drawer>
             )}
-        </nav>
+        </nav> */}
       </div>
     </>
   )
