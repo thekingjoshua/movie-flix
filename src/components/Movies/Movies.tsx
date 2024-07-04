@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux'
 
 import { useGetMoviesQuery } from '../../services/TMDB'
 import {MovieList} from '../index'
+import Loader from '../Loader/Loader'
 
 const Movies = () => {
   const { data, error, isFetching } = useGetMoviesQuery('')
@@ -14,7 +15,8 @@ const Movies = () => {
   if(isFetching){
     return (
       <Box display="flex" justifyContent='center'>
-        <CircularProgress size="4rem" />
+        {/* <CircularProgress size="4rem" /> */}
+        <Loader />
       </Box>
     )
   }
