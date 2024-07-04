@@ -21,7 +21,8 @@ const NavBar = () => {
       drawer: {[theme.breakpoints.up('sm')]: {width: DRAWER_WIDTH}, flexShrink: 0},
       linkButton: {
         '&:hover': {
-          color: 'white !important',
+          // color: 'white !important',
+          color: 'red !important',
           textDecoration: 'none'
         }
       }

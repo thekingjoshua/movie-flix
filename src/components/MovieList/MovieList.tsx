@@ -23,7 +23,7 @@ const MovieList = ({movies}: MovieListProps) => {
   
     return (
     <Grid container sx={classes.moviesContainer}>
-      {movies.results.map((movie, i) => (
+      {movies?.results.map((movie, i) => (
         <Movie key={i} movie={movie} i={i} />
       ))}
     </Grid>

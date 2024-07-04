@@ -8,6 +8,8 @@ import {MovieList} from '../index'
 
 const Movies = () => {
   const { data, error, isFetching } = useGetMoviesQuery('')
+  
+ 
 
   if(isFetching){
     return (
@@ -16,15 +18,19 @@ const Movies = () => {
       </Box>
     )
   }
-  if(!data.results.length){
+  if(!data?.results.length){
     return (
       <Box display="flex" alignItems='center' mt="20px">
         <Typography variant="h4">No movies found</Typography>
       </Box>
     )
   }
+
+  data?.results.map((movie : {}, i: number) => (
+    console.log(movie, i)
+  ))
   
-  if (error) return 'An error has occured'
+  if (error) return 'An error has occured';
 
   return (
     <div>
