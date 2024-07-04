@@ -13,7 +13,7 @@ const RED_LOGO = "https://fontmeme.com/permalink/240617/c6630a27ea06b4012057e33b
 const BLUE_LOGO = "https://fontmeme.com/permalink/240617/35f9925a1f4a2342bafd9c77633419e5.png"
 
 const CATEGORIES = [
-    {label: 'Popular', value: 'popular'},
+    {label: 'Popular Movies', value: 'popular'},
     {label: 'Top Rated', value: 'top_rated'},
     {label: 'Upcoming', value: 'upcoming'}
 ]
