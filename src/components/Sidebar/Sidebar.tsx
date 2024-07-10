@@ -61,7 +61,7 @@ const DEMO_CATEGORIES = [
         <Divider/>
             <ListSubheader>Genres</ListSubheader>
         {isFetching ? (
-            <Loader/>
+            <p style={{textAlign: 'center'}}>Loading...</p>
         ) : data?.genres.map((arr: {id: number, name: string}) => (
                 <Link key={arr.name} style={classes.links} to='/'>
                     <ListItem onClick={() => {}} button>
