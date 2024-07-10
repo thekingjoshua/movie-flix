@@ -5,6 +5,9 @@ import {useTheme} from '@mui/material/styles'
 import { Dispatch, SetStateAction } from 'react'
 import { Divider, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from '@mui/material'
 
+import {useGetGenresQuery} from '../../services/TMDB'
+import Loader from '../Loader/Loader'
+
 type SidebarProps = {
     setMobileOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -25,10 +28,10 @@ const DEMO_CATEGORIES = [
     {label: 'Animation', value: 'animation'}
 ]
 
-// const DEMO_CATEGORIES = ['Comedy', 'Action', 'Horror', 'Animation']
-
     const Sidebar = (props: SidebarProps) => {
     const theme = useTheme()
+    const {data, isFetching} = useGetGenresQuery('')
+
     const classes = {
         imageLink: { display: 'flex', justifyContent: 'center', padding: '10% 0'}, 
         image: { width: '70%'}, 
@@ -57,13 +60,15 @@ const DEMO_CATEGORIES = [
         </List>
         <Divider/>
             <ListSubheader>Genres</ListSubheader>
-        {DEMO_CATEGORIES.map(({label, value}) => (
-                <Link key={value} style={classes.links} to='/'>
+        {isFetching ? (
+            <Loader/>
+        ) : data?.genres.map((arr: {id: number, name: string}) => (
+                <Link key={arr.name} style={classes.links} to='/'>
                     <ListItem onClick={() => {}} button>
                         {/* <ListItemIcon>
                             <img src={RED_LOGO} style={classes.genreImage} height={30} />
                         </ListItemIcon> */}
-                        <ListItemText primary={label} />
+                        <ListItemText primary={arr.name} />
                     </ListItem>
                 </Link>
             ))}

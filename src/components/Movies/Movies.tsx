@@ -28,9 +28,6 @@ const Movies = () => {
     )
   }
 
-  data?.results.map((movie : {}, i: number) => (
-    console.log(movie, i)
-  ))
   
   if (error) return 'An error has occured';
 
