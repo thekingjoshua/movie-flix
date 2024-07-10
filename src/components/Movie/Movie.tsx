@@ -62,7 +62,11 @@ const Movie = ({movie, i}: MovieProps) => {
         <Link style={classes.links} to={`/movie/${movie.id}`}>
           <img alt={movie.title.toString()} style={classes.image} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "https://www.fillmurray.com/200/300"} />
             <Typography sx={classes.title} variant="h5">{movie.title}</Typography>
-            <Rating readOnly value={movie.vote_average  / 2} precision={0.1} />
+            <Tooltip disableFocusListener title={`${movie.vote_average.toFixed(1)} / 10`}>
+                <div>
+                  <Rating readOnly value={movie.vote_average  / 2} precision={0.1} />
+                </div>
+            </Tooltip>
         </Link>
       </Grow>
     </Grid>
