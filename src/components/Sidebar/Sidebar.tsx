@@ -8,6 +8,8 @@ import { Divider, List, ListItem, ListItemIcon, ListItemText, ListSubheader } fr
 import {useGetGenresQuery} from '../../services/TMDB'
 import Loader from '../Loader/Loader'
 
+import genreIcons from '../../assets/genres'
+
 type SidebarProps = {
     setMobileOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -36,7 +38,7 @@ const DEMO_CATEGORIES = [
         imageLink: { display: 'flex', justifyContent: 'center', padding: '10% 0'}, 
         image: { width: '70%'}, 
         links: {color: theme.palette.text.primary, textDecoration: 'none'}, 
-        genreImage: {filter: theme.palette.mode === 'dark' ? 'dark' : 'invert(1)'}
+        genreImage: {filter: theme.palette.mode === 'dark' ? 'invert(1)' : ''}
     }
 
     return (
@@ -50,9 +52,9 @@ const DEMO_CATEGORIES = [
         {CATEGORIES.map(({label, value}) => (
             <Link key={value} style={classes.links} to='/'>
                     <ListItem onClick={() => {}} button>
-                        {/* <ListItemIcon>
-                            <img src={RED_LOGO} style={classes.genreImage} height={30} />
-                        </ListItemIcon> */}
+                        <ListItemIcon>
+                            <img src={genreIcons[label.toLowerCase()]} style={classes.genreImage} height={30} />
+                        </ListItemIcon>
                         <ListItemText primary={label} />
                     </ListItem>
                 </Link>
@@ -65,9 +67,9 @@ const DEMO_CATEGORIES = [
         ) : data?.genres.map((arr: {id: number, name: string}) => (
                 <Link key={arr.name} style={classes.links} to='/'>
                     <ListItem onClick={() => {}} button>
-                        {/* <ListItemIcon>
-                            <img src={RED_LOGO} style={classes.genreImage} height={30} />
-                        </ListItemIcon> */}
+                        <ListItemIcon>
+                            <img src={genreIcons[arr.name.toLowerCase()]} style={classes.genreImage} height={30} />
+                        </ListItemIcon>
                         <ListItemText primary={arr.name} />
                     </ListItem>
                 </Link>
