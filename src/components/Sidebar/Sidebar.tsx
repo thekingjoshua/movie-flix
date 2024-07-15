@@ -40,6 +40,7 @@ const DEMO_CATEGORIES = [
         links: {color: theme.palette.text.primary, textDecoration: 'none'}, 
         genreImage: {filter: theme.palette.mode === 'dark' ? 'invert(1)' : ''}
     }
+    type GenreKeys = keyof typeof genreIcons;
 
     return (
         <>
@@ -53,7 +54,7 @@ const DEMO_CATEGORIES = [
             <Link key={value} style={classes.links} to='/'>
                     <ListItem onClick={() => {}} button>
                         <ListItemIcon>
-                            <img src={genreIcons[label.toLowerCase()]} style={classes.genreImage} height={30} />
+                            <img src={genreIcons[label.toLowerCase() as GenreKeys]} style={classes.genreImage} height={30} />
                         </ListItemIcon>
                         <ListItemText primary={label} />
                     </ListItem>
@@ -68,7 +69,7 @@ const DEMO_CATEGORIES = [
                 <Link key={arr.name} style={classes.links} to='/'>
                     <ListItem onClick={() => {}} button>
                         <ListItemIcon>
-                            <img src={genreIcons[arr.name.toLowerCase()]} style={classes.genreImage} height={30} />
+                            <img src={genreIcons[arr.name.toLowerCase() as GenreKeys]} style={classes.genreImage} height={30} />
                         </ListItemIcon>
                         <ListItemText primary={arr.name} />
                     </ListItem>
