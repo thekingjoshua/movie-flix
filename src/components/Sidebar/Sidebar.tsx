@@ -7,6 +7,9 @@ import { Divider, List, ListItem, ListItemIcon, ListItemText, ListSubheader } fr
 
 import {useGetGenresQuery} from '../../services/TMDB'
 import Loader from '../Loader/Loader'
+import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
+
+import { useDispatch, useSelector } from 'react-redux'
 
 import genreIcons from '../../assets/genres'
 
@@ -23,16 +26,10 @@ const CATEGORIES = [
     {label: 'Upcoming', value: 'upcoming'}
 ]
 
-const DEMO_CATEGORIES = [
-    {label: 'Comedy', value: 'comedy'},
-    {label: 'Action', value: 'action'},
-    {label: 'Horror', value: 'horror'},
-    {label: 'Animation', value: 'animation'}
-]
-
     const Sidebar = (props: SidebarProps) => {
     const theme = useTheme()
     const {data, isFetching} = useGetGenresQuery('')
+    const dispatch = useDispatch();
 
     const classes = {
         imageLink: { display: 'flex', justifyContent: 'center', padding: '10% 0'}, 
@@ -52,7 +49,7 @@ const DEMO_CATEGORIES = [
             <ListSubheader>Categories</ListSubheader>
         {CATEGORIES.map(({label, value}) => (
             <Link key={value} style={classes.links} to='/'>
-                    <ListItem onClick={() => {}} button>
+                    <ListItem onClick={() => dispatch(selectGenreOrCategory(value))} button>
                         <ListItemIcon>
                             <img src={genreIcons[label.toLowerCase() as GenreKeys]} style={classes.genreImage} height={30} />
                         </ListItemIcon>
@@ -67,7 +64,7 @@ const DEMO_CATEGORIES = [
             <p style={{textAlign: 'center'}}>Loading...</p>
         ) : data?.genres.map((arr: {id: number, name: string}) => (
                 <Link key={arr.name} style={classes.links} to='/'>
-                    <ListItem onClick={() => {}} button>
+                    <ListItem onClick={() => dispatch(selectGenreOrCategory(arr.id))} button>
                         <ListItemIcon>
                             <img src={genreIcons[arr.name.toLowerCase() as GenreKeys]} style={classes.genreImage} height={30} />
                         </ListItemIcon>

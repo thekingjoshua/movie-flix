@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { tmdbApi } from '../services/TMDB'; // Adjust path as needed
+import genreOrCategoryReducer from '../features/currentGenreOrCatergory'
 
 export const store = configureStore({
     reducer: {
         [tmdbApi.reducerPath]: tmdbApi.reducer,
+        currentGenreOrCategory: genreOrCategoryReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(tmdbApi.middleware),
 });
