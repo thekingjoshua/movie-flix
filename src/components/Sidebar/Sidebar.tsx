@@ -16,6 +16,11 @@ import genreIcons from '../../assets/genres'
 type SidebarProps = {
     setMobileOpen: Dispatch<SetStateAction<boolean>>
 }
+type RootState = {
+    currentGenreOrCategory: {
+        genreIdOrCategoryName: string
+    }
+}
 
 const RED_LOGO = "https://fontmeme.com/permalink/240617/c6630a27ea06b4012057e33b52c7f45d.png"
 const BLUE_LOGO = "https://fontmeme.com/permalink/240617/35f9925a1f4a2342bafd9c77633419e5.png"
@@ -27,9 +32,12 @@ const CATEGORIES = [
 ]
 
     const Sidebar = (props: SidebarProps) => {
+    const {genreIdOrCategoryName}  = useSelector((state: RootState) => state.currentGenreOrCategory)
     const theme = useTheme()
     const {data, isFetching} = useGetGenresQuery('')
     const dispatch = useDispatch();
+    
+    console.log(genreIdOrCategoryName)
 
     const classes = {
         imageLink: { display: 'flex', justifyContent: 'center', padding: '10% 0'}, 
