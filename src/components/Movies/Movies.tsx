@@ -7,8 +7,18 @@ import { useGetMoviesQuery } from '../../services/TMDB'
 import {MovieList} from '../index'
 import Loader from '../Loader/Loader'
 
+
+import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
+
+type RootState = {
+  currentGenreOrCategory: {
+      genreIdOrCategoryName: string
+  }
+}
+
 const Movies = () => {
-  const { data, error, isFetching } = useGetMoviesQuery('')
+  const {genreIdOrCategoryName}  = useSelector((state: RootState) => state.currentGenreOrCategory)
+  const { data, error, isFetching } = useGetMoviesQuery({genreIdOrCategoryName})
   
  
 
