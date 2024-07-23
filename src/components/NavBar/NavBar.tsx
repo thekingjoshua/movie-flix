@@ -3,7 +3,7 @@ import {AppBar, IconButton, Toolbar, Drawer, Button, Avatar, useMediaQuery} from
 import {Menu, AccountCircle, Brightness4, Brightness7} from '@mui/icons-material'
 import {Link} from 'react-router-dom'
 import {useTheme} from '@mui/material/styles'
-import {Sidebar} from '../index'
+import {Search, Sidebar} from '../index'
 
 const isAuthenticated = true;
 const DRAWER_WIDTH = 240
@@ -40,7 +40,7 @@ const NavBar = () => {
         <IconButton color="inherit" sx={{ml: isMobile ? 1 : 10}} onClick={() => {}}>
           {theme.palette.mode === 'dark' ? <Brightness7/> : <Brightness4/>}
         </IconButton>
-        {!isMobile && 'Search...'}
+        {!isMobile && <Search />}
         <div>
           {!isAuthenticated ? (
             <Button color='inherit' onClick={() => {}}>
@@ -53,7 +53,7 @@ const NavBar = () => {
             </Button>
           )}
         </div>
-        {isMobile && 'Search...'}
+        {isMobile && <Search />}
       </Toolbar>
       </AppBar> 
       <div>
