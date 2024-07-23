@@ -17,10 +17,11 @@ type RootState = {
 }
 
 const Movies = () => {
+  const [page, setPage] = useState<number>(1)
   const {genreIdOrCategoryName}  = useSelector((state: RootState) => state.currentGenreOrCategory)
-  const { data, error, isFetching } = useGetMoviesQuery({genreIdOrCategoryName})
-  
+  const { data, error, isFetching } = useGetMoviesQuery({genreIdOrCategoryName, page})
  
+  console.log(data)
 
   if(isFetching){
     return (
