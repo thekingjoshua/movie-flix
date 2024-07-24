@@ -12,16 +12,16 @@ import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
 
 type RootState = {
   currentGenreOrCategory: {
-      genreIdOrCategoryName: string
+      genreIdOrCategoryName: string,
+      searchQuery: string
   }
 }
 
 const Movies = () => {
   const [page, setPage] = useState<number>(1)
-  const {genreIdOrCategoryName}  = useSelector((state: RootState) => state.currentGenreOrCategory)
-  const { data, error, isFetching } = useGetMoviesQuery({genreIdOrCategoryName, page})
+  const {genreIdOrCategoryName, searchQuery}  = useSelector((state: RootState) => state.currentGenreOrCategory)
+  const { data, error, isFetching } = useGetMoviesQuery({genreIdOrCategoryName, page, searchQuery})
  
-  console.log(data)
 
   if(isFetching){
     return (
