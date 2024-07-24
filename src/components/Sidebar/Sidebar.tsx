@@ -37,7 +37,6 @@ const CATEGORIES = [
     const {data, isFetching} = useGetGenresQuery('')
     const dispatch = useDispatch();
     
-    console.log(genreIdOrCategoryName)
 
     const classes = {
         imageLink: { display: 'flex', justifyContent: 'center', padding: '10% 0'}, 

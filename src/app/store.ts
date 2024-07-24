@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { tmdbApi } from '../services/TMDB'; // Adjust path as needed
+import { tmdbApi } from '../services/TMDB'; 
 import genreOrCategoryReducer from '../features/currentGenreOrCatergory'
 
 export const store = configureStore({
