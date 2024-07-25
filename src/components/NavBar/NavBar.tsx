@@ -1,12 +1,33 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {AppBar, IconButton, Toolbar, Drawer, Button, Avatar, useMediaQuery} from '@mui/material';
 import {Menu, AccountCircle, Brightness4, Brightness7} from '@mui/icons-material'
 import {Link} from 'react-router-dom'
 import {useTheme} from '@mui/material/styles'
 import {Search, Sidebar} from '../index'
+import { fetchToken, moviesApi, createSessionId } from '../../utils';
 
-const isAuthenticated = true;
+const isAuthenticated = false;
 const DRAWER_WIDTH = 240
+
+const token = localStorage.getItem('request_token')
+const sessionIdFromLocalStorage = localStorage.getItem('session_id')
+
+// useEffect(() => {
+//   const logInUser = async () => {
+//     if(token){
+//       if(sessionIdFromLocalStorage){
+//         const {data: userData} = await moviesApi.get(`/account?session_id=${sessionIdFromLocalStorage}`)
+        
+//       }else{
+//         const sessionId = await createSessionId()
+
+//         const {data: userData} = await moviesApi.get(`/account?session_id=${sessionId}`)
+
+//       }
+//     }
+//   }
+
+// }, [token])
 
 
 const NavBar = () => {
@@ -21,8 +42,6 @@ const NavBar = () => {
       drawer: {[theme.breakpoints.up('sm')]: {width: DRAWER_WIDTH}, flexShrink: 0},
       linkButton: {
         '&:hover': {
-          // color: 'white !important',
-          color: 'red !important',
           textDecoration: 'none'
         }
       }
@@ -43,7 +62,7 @@ const NavBar = () => {
         {!isMobile && <Search />}
         <div>
           {!isAuthenticated ? (
-            <Button color='inherit' onClick={() => {}}>
+            <Button color='inherit' onClick={fetchToken}>
               Login &nbsp; <AccountCircle/>
             </Button>
           ): (
