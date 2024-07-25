@@ -37,13 +37,11 @@ const Search = () => {
     const [query, setQuery] =  useState<string>()
     const dispatch = useDispatch()
     const classes = {
-        searchContainer: {backgroundColor: 'red', display: 'flex', justifyContent: 'center', [theme.breakpoints.down('sm')]: {width: '100%'}},
-        input: { color: theme.palette.mode === 'light' ? 'white' : 'black', borderColor: 'red', filter: theme.palette.mode === 'light' ? 'light' : 'invert(1)', [theme.breakpoints.down('sm')]: { marginTop: '-10px', marginBottom: '10px'}},
+        input: { color: theme.palette.mode === 'light' ? 'white' : 'black', filter: theme.palette.mode === 'light' ? 'light' : 'invert(1)', [theme.breakpoints.down('sm')]: { marginTop: '-10px', marginBottom: '10px'}},
         searchIcon: { color: theme.palette.mode === 'light' ? 'white' : 'black'}
     }
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if(e.key === 'Enter'){
-            console.log(query)
             dispatch(searchMovie(query))
             console.log('working')
         }
