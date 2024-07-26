@@ -5,36 +5,44 @@ import {Link} from 'react-router-dom'
 import {useTheme} from '@mui/material/styles'
 import {Search, Sidebar} from '../index'
 import { fetchToken, moviesApi, createSessionId } from '../../utils';
+import { useDispatch, useSelector } from 'react-redux';
 
-const isAuthenticated = false;
+import {setUser, userSelector} from '../../features/auth'
+
 const DRAWER_WIDTH = 240
 
 const token = localStorage.getItem('request_token')
 const sessionIdFromLocalStorage = localStorage.getItem('session_id')
 
-// useEffect(() => {
-//   const logInUser = async () => {
-//     if(token){
-//       if(sessionIdFromLocalStorage){
-//         const {data: userData} = await moviesApi.get(`/account?session_id=${sessionIdFromLocalStorage}`)
-        
-//       }else{
-//         const sessionId = await createSessionId()
 
-//         const {data: userData} = await moviesApi.get(`/account?session_id=${sessionId}`)
-
-//       }
-//     }
-//   }
-
-// }, [token])
 
 
 const NavBar = () => {
+const dispatch = useDispatch()
   const isMobile = useMediaQuery('(max-width: 600px)')
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState<boolean>(false)
+  const {isAuthenticated, user} = useSelector(userSelector)
   
+  useEffect(() => {
+    const logInUser = async () => {
+      if(token){
+        if(sessionIdFromLocalStorage){
+          console.log(1)
+          const {data: userData} = await moviesApi.get(`/account?session_id=${sessionIdFromLocalStorage}`)
+          dispatch(setUser(userData))
+        }else{
+          console.log(2)
+          const sessionId = await createSessionId()
+          const {data: userData} = await moviesApi.get(`/account?session_id=${sessionId}`)
+  
+          dispatch(setUser(userData))
+        }
+      }
+    }
+    logInUser()
+  }, [token])
+  console.log(user)
 
   const classes = {
       toolbar: {height: '70px', display: 'flex', justifyContent: 'space-between', marginLeft: '240px', [theme.breakpoints.down('sm')] : {marginLeft: '0', flexWrap: 'wrap'}}, 
@@ -66,7 +74,7 @@ const NavBar = () => {
               Login &nbsp; <AccountCircle/>
             </Button>
           ): (
-            <Button color='inherit' component={Link} to={`/profile/:id`} sx={classes?.linkButton} onClick={() => {}}>
+            <Button color='inherit' component={Link} to={`/profile/${user.id}`} sx={classes?.linkButton} onClick={() => {}}>
               {!isMobile && <>My Movies &nbsp;</>}
               <Avatar style={{width: 30, height: 30}} alt='Profile' src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png'/>
             </Button>
