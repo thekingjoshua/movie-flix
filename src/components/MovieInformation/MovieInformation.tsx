@@ -1,9 +1,42 @@
+import {Grid, Box, CircularProgress} from '@mui/material'
+import {Link, useParams} from 'react-router-dom'
+import { useGetMovieQuery } from '../../services/TMDB'
+import {useTheme} from '@mui/material'
+
 
 const MovieInformation = () => {
+  const {id} = useParams()
+  const {data, isFetching, error} = useGetMovieQuery(id)
+  const theme = useTheme()
+  console.log(data)
+
+  const classes = {
+    containerSpaceAround: { display: 'flex', justifyContent: 'space-around', margin: '10px 0 !important', [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      flexWrap: 'wrap'
+    }}
+  }
+
+  if(isFetching) {
+    return (
+      <Box display='flex' justifyContent='center' alignItems='center'>
+        <CircularProgress size="8rem"/>
+      </Box>
+    )
+  }
+  if(error) {
+    return (
+      <Box display='flex' justifyContent='center' alignItems='center'>
+        <Link to="/">Something has gone wrong, go back</Link>
+      </Box>
+    )
+  }
+
+
   return (
-    <div>
-      Movie Information
-    </div>
+    <Grid container style={classes.containerSpaceAround}>
+
+    </Grid>
   )
 }
 
