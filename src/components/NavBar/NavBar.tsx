@@ -28,11 +28,9 @@ const dispatch = useDispatch()
     const logInUser = async () => {
       if(token){
         if(sessionIdFromLocalStorage){
-          console.log(1)
           const {data: userData} = await moviesApi.get(`/account?session_id=${sessionIdFromLocalStorage}`)
           dispatch(setUser(userData))
         }else{
-          console.log(2)
           const sessionId = await createSessionId()
           const {data: userData} = await moviesApi.get(`/account?session_id=${sessionId}`)
   
@@ -42,7 +40,6 @@ const dispatch = useDispatch()
     }
     logInUser()
   }, [token])
-  console.log(user)
 
   const classes = {
       toolbar: {height: '70px', display: 'flex', justifyContent: 'space-between', marginLeft: '240px', [theme.breakpoints.down('sm')] : {marginLeft: '0', flexWrap: 'wrap'}}, 
