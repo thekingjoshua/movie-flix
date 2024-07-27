@@ -23,9 +23,8 @@ const App = () => {
                 <NavBar/>
                 <main style={classes.content}>
                 <Routes>
-                        {/* <Route path='/' element={<h1>hello</h1>} /> */}
                         <Route path='/' element={<Movies/>} />
-                        <Route path='/movies/:id' element={<MovieInformation/>} />
+                        <Route path='/movie/:id' element={<MovieInformation/>} />
                         <Route path='/actors/:id' element={<Actors/>} />
                         <Route path='/profile/:id' element={<Profile/>} />
                     </Routes>
