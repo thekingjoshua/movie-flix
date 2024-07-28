@@ -14,7 +14,10 @@ const MovieInformation = () => {
     containerSpaceAround: { display: 'flex', justifyContent: 'space-around', margin: '10px 0 !important', [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       flexWrap: 'wrap'
-    }}
+    }},
+    poster: {
+      backgroundColor: 'red'
+    }
   }
 
   if(isFetching) {
@@ -35,7 +38,9 @@ const MovieInformation = () => {
 
   return (
     <Grid container style={classes.containerSpaceAround}>
-
+      <Grid item sm={12} lg={4}>
+        <img style={classes.poster} src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} />
+      </Grid>
     </Grid>
   )
 }
