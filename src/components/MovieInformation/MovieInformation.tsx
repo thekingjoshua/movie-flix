@@ -60,6 +60,7 @@ const MovieInformation = () => {
       </Grid>
       <Grid item container direction="column" lg={7}>
         <Typography variant="h3" align='center' gutterBottom> {data?.title} ({data?.release_date.split('-')[0]})</Typography>
+        <Typography variant="h3" align='center' gutterBottom> {data?.tagline}</Typography>
       </Grid>
     </Grid>
   )
