@@ -31,8 +31,11 @@ const MovieInformation = () => {
       flexDirection: 'column',
       flexWrap: 'wrap',
     }},
-    poster: {
-
+    ratingBox: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
     }
   }
 
@@ -55,14 +58,17 @@ const MovieInformation = () => {
   return (
     <Grid container style={classes.containerSpaceAround}>
       <Grid item sm={12} lg={4}>
-        <CImg style={classes.poster} src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`} alt={data?.title} />
+        <CImg src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`} alt={data?.title} />
       </Grid>
       <Grid item container direction="column" lg={7}>
         <Typography variant="h3" align='center' gutterBottom> {data?.title} ({data?.release_date.split('-')[0]})</Typography>
         <Typography variant="h5" align='center' gutterBottom> {data?.tagline}</Typography>
         <Grid item style={classes.containerSpaceAround}>
-          <Box display="flex" alignItems='center'>
+          <Box sx={classes.ratingBox} >
             <Rating readOnly value={data.vote_average / 2}/>
+            <Typography variant='subtitle1' style={{marginLeft: '15px'}}>
+              {(data?.vote_average).toFixed(1) } / 10
+            </Typography>
           </Box>
         </Grid>
       </Grid>
