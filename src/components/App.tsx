@@ -13,7 +13,8 @@ const App = () => {
         content: {
             flexGrow: '1',
             paddingTop: '5em',
-            marginLeft: isMobile ? '10px' : '350px'
+            margin: isMobile ? '0 10px 0 10px' : '0 0 0 350px ',
+            // marginLeft: isMobile ? '10px' : '350px'
         }
     }
 
