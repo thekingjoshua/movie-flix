@@ -1,5 +1,5 @@
 import {CssBaseline, useMediaQuery} from '@mui/material'
-import { Link, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {Actors, MovieInformation, Movies, NavBar, Profile} from './index'
 
 const App = () => {
@@ -14,7 +14,6 @@ const App = () => {
             flexGrow: '1',
             paddingTop: '5em',
             margin: isMobile ? '0 10px 0 10px' : '0 0 0 350px ',
-            // marginLeft: isMobile ? '10px' : '350px'
         }
     }
 
