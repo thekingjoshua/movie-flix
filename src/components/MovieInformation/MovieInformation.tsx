@@ -8,7 +8,7 @@ const CImg = styled('img')(({theme}) => ({
   display: 'flex', justifyContent: 'center', alignItems: 'center',
   borderRadius: '20px',
   boxShadow: '0.5em 1em 1em rgb(64, 64, 70)', 
-  width: '50%', 
+  width: '80%', 
   [theme.breakpoints.down('sm')]: {
     width: '100%', 
     marginBottom: '30px',
@@ -56,7 +56,6 @@ const MovieInformation = () => {
     <Grid container style={classes.containerSpaceAround}>
       <Grid item sm={12} lg={4}>
         <CImg style={classes.poster} src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`} alt={data?.title} />
-        {/* <img style={classes.poster} src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`} alt={data?.title} /> */}
       </Grid>
       <Grid item container direction="column" lg={7}>
         <Typography variant="h3" align='center' gutterBottom> {data?.title} ({data?.release_date.split('-')[0]})</Typography>
