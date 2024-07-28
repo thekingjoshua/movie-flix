@@ -1,4 +1,4 @@
-import {Grid, Box, CircularProgress, styled, Typography} from '@mui/material'
+import {Grid, Box, CircularProgress, styled, Typography, Rating} from '@mui/material'
 import {Link, useParams} from 'react-router-dom'
 import { useGetMovieQuery } from '../../services/TMDB'
 import {useTheme} from '@mui/material'
@@ -59,7 +59,12 @@ const MovieInformation = () => {
       </Grid>
       <Grid item container direction="column" lg={7}>
         <Typography variant="h3" align='center' gutterBottom> {data?.title} ({data?.release_date.split('-')[0]})</Typography>
-        <Typography variant="h3" align='center' gutterBottom> {data?.tagline}</Typography>
+        <Typography variant="h5" align='center' gutterBottom> {data?.tagline}</Typography>
+        <Grid item style={classes.containerSpaceAround}>
+          <Box display="flex" alignItems='center'>
+            <Rating readOnly value={data.vote_average / 2}/>
+          </Box>
+        </Grid>
       </Grid>
     </Grid>
   )
