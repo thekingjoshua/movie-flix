@@ -1,4 +1,4 @@
-import {Grid, Box, CircularProgress, styled} from '@mui/material'
+import {Grid, Box, CircularProgress, styled, Typography} from '@mui/material'
 import {Link, useParams} from 'react-router-dom'
 import { useGetMovieQuery } from '../../services/TMDB'
 import {useTheme} from '@mui/material'
@@ -57,6 +57,9 @@ const MovieInformation = () => {
       <Grid item sm={12} lg={4}>
         <CImg style={classes.poster} src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`} alt={data?.title} />
         {/* <img style={classes.poster} src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`} alt={data?.title} /> */}
+      </Grid>
+      <Grid item container direction="column" lg={7}>
+        <Typography variant="h3" align='center' gutterBottom> {data?.title} ({data?.release_date.split('-')[0]})</Typography>
       </Grid>
     </Grid>
   )
