@@ -2,6 +2,8 @@ import {Grid, Box, CircularProgress, styled, Typography, Rating} from '@mui/mate
 import {Link, useParams} from 'react-router-dom'
 import { useGetMovieQuery } from '../../services/TMDB'
 import {useTheme} from '@mui/material'
+import genreIcons from '../../assets/genres'
+
 
 const CImg = styled('img')(({theme}) => ({
   backgroundColor: 'blue',
@@ -18,11 +20,13 @@ const CImg = styled('img')(({theme}) => ({
   }
 }))
 
+type GenreKeys = keyof typeof genreIcons;
+
+
 const MovieInformation = () => {
   const {id} = useParams()
   const {data, isFetching, error} = useGetMovieQuery(id)
   const theme = useTheme()
-  console.log(data?.spoken_languages[0].name)
 
   const classes = {
     containerSpaceAround: { 
@@ -40,7 +44,10 @@ const MovieInformation = () => {
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: 0
-    }
+    },
+    genresContainer: {},
+    links: {backgroundColor: ''},
+    genreImage: {filter: theme.palette.mode === 'dark' ? 'invert(1)' : ''}
   }
 
   if(isFetching) {
@@ -72,6 +79,16 @@ const MovieInformation = () => {
             <Typography variant='subtitle1' style={{marginLeft: '15px'}}>{(data?.vote_average).toFixed(1) } / 10</Typography>
             <Typography variant='h6' alignItems="center" style={{marginLeft: '40px'}}>{data?.runtime} min / {data?.spoken_languages.length > 0 ? data?.spoken_languages[0].name : ''}</Typography>
           </Box>
+        </Grid>
+        <Grid style={classes.genresContainer} item >
+          {data?.genres?.map((genre: {name: string}) => (
+            <Link key={genre?.name} style={classes.links} to='/' onClick={() => {}}>
+              <img src={genreIcons[genre.name.toLowerCase() as GenreKeys]} style={classes.genreImage} height={30} />
+              <Typography color="textPrimary" variant="subtitle1">
+                {genre?.name}
+              </Typography>
+            </Link>
+          ))}
         </Grid>
       </Grid>
     </Grid>
