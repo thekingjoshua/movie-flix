@@ -11,13 +11,13 @@ const CImg = styled('img')(({theme}) => ({
   borderRadius: '20px',
   boxShadow: '0.5em 1em 1em rgb(64, 64, 70)', 
   width: '80%', 
+  [theme.breakpoints.down('md')]: {
+    height: '350px',
+  },
   [theme.breakpoints.down('sm')]: {
     width: '100%', 
     marginBottom: '30px',
   },
-  [theme.breakpoints.down('md')]: {
-    height: '350px',
-  }
 }))
 
 type GenreKeys = keyof typeof genreIcons;
@@ -45,8 +45,11 @@ const MovieInformation = () => {
       alignItems: 'center',
       marginBottom: 0
     },
-    genresContainer: {margin: '10px 0 !imporant', display: 'flex', justifyContent: 'space-around',},
-    links: {backgroundColor: ''},
+    genresContainer: {margin: '25px 0 !imporant', display: 'flex', justifyContent: 'space-around', paddingTop: '2rem'},
+    links: {display: 'flex', justifyContent: 'center', alignItems: 'center',   
+      [theme.breakpoints.down('sm')]: {
+        padding: '0.5rem 1rem'
+    }},
     genreImage: {filter: theme.palette.mode === 'dark' ? 'invert(1)' : ''}
   }
 
@@ -84,9 +87,7 @@ const MovieInformation = () => {
           {data?.genres?.map((genre: {name: string}) => (
             <Link key={genre?.name} style={classes.links} to='/' onClick={() => {}}>
               <img src={genreIcons[genre.name.toLowerCase() as GenreKeys]} style={classes.genreImage} height={30} />
-              <Typography color="textPrimary" variant="subtitle1">
-                {genre?.name}
-              </Typography>
+              <Typography color="textPrimary" variant="subtitle1">{genre?.name}</Typography>
             </Link>
           ))}
         </Grid>
