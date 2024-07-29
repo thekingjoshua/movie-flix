@@ -43,7 +43,6 @@ const Search = () => {
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if(e.key === 'Enter'){
             dispatch(searchMovie(query))
-            console.log('working')
         }
 
     }
