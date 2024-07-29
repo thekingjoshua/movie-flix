@@ -45,7 +45,7 @@ const MovieInformation = () => {
       alignItems: 'center',
       marginBottom: 0
     },
-    genresContainer: {},
+    genresContainer: {margin: '10px 0 !imporant', display: 'flex', justifyContent: 'space-around',},
     links: {backgroundColor: ''},
     genreImage: {filter: theme.palette.mode === 'dark' ? 'invert(1)' : ''}
   }
