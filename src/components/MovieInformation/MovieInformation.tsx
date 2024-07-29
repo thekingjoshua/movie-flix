@@ -22,7 +22,7 @@ const MovieInformation = () => {
   const {id} = useParams()
   const {data, isFetching, error} = useGetMovieQuery(id)
   const theme = useTheme()
-  console.log(data)
+  console.log(data?.spoken_languages[0].name)
 
   const classes = {
     containerSpaceAround: { 
@@ -33,6 +33,9 @@ const MovieInformation = () => {
     }},
     ratingBox: {
       display: 'flex',
+      [theme.breakpoints.down('sm')]: {
+        flexDirection: 'column',
+      },
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
@@ -55,7 +58,6 @@ const MovieInformation = () => {
     )
   }
 
-
   return (
     <Grid container style={classes.containerSpaceAround}>
       <Grid item sm={12} lg={4}>
@@ -68,7 +70,7 @@ const MovieInformation = () => {
           <Box sx={classes.ratingBox} >
             <Rating readOnly value={data.vote_average / 2}/>
             <Typography variant='subtitle1' style={{marginLeft: '15px'}}>{(data?.vote_average).toFixed(1) } / 10</Typography>
-            <Typography variant='h6' alignItems="center" style={{marginLeft: '40px'}}>{data?.runtime} min</Typography>
+            <Typography variant='h6' alignItems="center" style={{marginLeft: '40px'}}>{data?.runtime} min / {data?.spoken_languages.length > 0 ? data?.spoken_languages[0].name : ''}</Typography>
           </Box>
         </Grid>
       </Grid>
