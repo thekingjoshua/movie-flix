@@ -26,7 +26,7 @@ const MovieInformation = () => {
 
   const classes = {
     containerSpaceAround: { 
-      display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', margin: '10px 10px !important', 
+      display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', margin: '10px 10px !important',
       [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       flexWrap: 'wrap',
@@ -36,6 +36,7 @@ const MovieInformation = () => {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
+      marginBottom: 0
     }
   }
 
@@ -66,9 +67,8 @@ const MovieInformation = () => {
         <Grid item style={classes.containerSpaceAround}>
           <Box sx={classes.ratingBox} >
             <Rating readOnly value={data.vote_average / 2}/>
-            <Typography variant='subtitle1' style={{marginLeft: '15px'}}>
-              {(data?.vote_average).toFixed(1) } / 10
-            </Typography>
+            <Typography variant='subtitle1' style={{marginLeft: '15px'}}>{(data?.vote_average).toFixed(1) } / 10</Typography>
+            <Typography variant='h6' alignItems="center" style={{marginLeft: '40px'}}>{data?.runtime} min</Typography>
           </Box>
         </Grid>
       </Grid>
