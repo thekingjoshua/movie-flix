@@ -111,6 +111,7 @@ const MovieInformation = () => {
           {data?.credits?.cast.map((character: {profile_path: string, id: number, name: string, character: string}, i: number) => (
             <Grid key={i} item xs={4} md={2} component={Link} to={`/actors/${character?.id}`} style={{textDecoration: 'none'}}>
                 <img style={classes.castImage} src={`https://image.tmdb.org/t/p/w500${character?.profile_path}`} alt={character.name} />
+                <Typography color="textPrimary">{character?.name}</Typography>
               </Grid>
           ))}
         </Grid>
