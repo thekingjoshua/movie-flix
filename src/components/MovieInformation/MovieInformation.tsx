@@ -8,8 +8,7 @@ import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
 
 
 const CImg = styled('img')(({theme}) => ({
-  backgroundColor: 'blue',
-  display: 'flex', justifyContent: 'center', alignItems: 'center',
+  // display: 'flex', justifyContent: 'center', alignItems: 'center',
   borderRadius: '20px',
   boxShadow: '0.5em 1em 1em rgb(64, 64, 70)', 
   width: '80%', 
@@ -35,7 +34,7 @@ const MovieInformation = () => {
 
   const classes = {
     containerSpaceAround: { 
-      display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', margin: '10px 10px !important',
+      display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start', width: '100%', margin: '10px 10px !important',
       [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       flexWrap: 'wrap',
