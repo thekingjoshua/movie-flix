@@ -112,6 +112,7 @@ const MovieInformation = () => {
             <Grid key={i} item xs={4} md={2} component={Link} to={`/actors/${character?.id}`} style={{textDecoration: 'none'}}>
                 <img style={classes.castImage} src={`https://image.tmdb.org/t/p/w500${character?.profile_path}`} alt={character.name} />
                 <Typography color="textPrimary">{character?.name}</Typography>
+                <Typography color="textSecondary">'{character?.character.split('/')[0]}'</Typography>
               </Grid>
           ))}
         </Grid>
