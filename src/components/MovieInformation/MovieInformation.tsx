@@ -30,7 +30,8 @@ const MovieInformation = () => {
   const {data, isFetching, error} = useGetMovieQuery(id)
   const theme = useTheme()
   const dispatch = useDispatch()
-  console.log(data?.genres)
+
+  console.log(data?.credits)
 
   const classes = {
     containerSpaceAround: { 
@@ -54,7 +55,12 @@ const MovieInformation = () => {
       [theme.breakpoints.down('sm')]: {
         padding: '0.5rem 1rem'
     }},
-    genreImage: {filter: theme.palette.mode === 'dark' ? 'invert(1)' : ''}
+    genreImage: {filter: theme.palette.mode === 'dark' ? 'invert(1)' : ''},
+    castImage: {
+      width: '100%',
+      maxWidth: '7em',
+      heigth: '8em'
+    }
   }
 
   if(isFetching) {
@@ -101,6 +107,14 @@ const MovieInformation = () => {
         <Typography style={{marginBottom: '2rem'}}>
           {data?.overview}
         </Typography>
+        <Typography variant="h5" gutterBottom> Top Cast</Typography>
+        <Grid item container spacing={2}>
+          {data?.credits?.cast.map((character: {profile_path: string, id: number, name: string, character: string}, i: number) => (
+            <Grid key={i} item xs={4} md={2} component={Link} to={`/actors/${character?.id}`} style={{textDecoration: 'none'}}>
+                <img style={classes.castImage} src={`https://image.tmdb.org/t/p/w500${character?.profile_path}`} alt={character.name} />
+              </Grid>
+          ))}
+        </Grid>
       </Grid>
     </Grid>
   )
