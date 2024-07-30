@@ -3,6 +3,8 @@ import {Link, useParams} from 'react-router-dom'
 import { useGetMovieQuery } from '../../services/TMDB'
 import {useTheme} from '@mui/material'
 import genreIcons from '../../assets/genres'
+import { useDispatch } from 'react-redux'
+import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
 
 
 const CImg = styled('img')(({theme}) => ({
@@ -27,6 +29,8 @@ const MovieInformation = () => {
   const {id} = useParams()
   const {data, isFetching, error} = useGetMovieQuery(id)
   const theme = useTheme()
+  const dispatch = useDispatch()
+  console.log(data?.genres)
 
   const classes = {
     containerSpaceAround: { 
@@ -84,8 +88,8 @@ const MovieInformation = () => {
           </Box>
         </Grid>
         <Grid style={classes.genresContainer} item >
-          {data?.genres?.map((genre: {name: string}) => (
-            <Link key={genre?.name} style={classes.links} to='/' onClick={() => {}}>
+          {data?.genres?.map((genre: {name: string, id: number}) => (
+            <Link key={genre?.name} style={classes.links} to='/' onClick={() => dispatch(selectGenreOrCategory(genre.id))}>
               <img src={genreIcons[genre.name.toLowerCase() as GenreKeys]} style={classes.genreImage} height={30} />
               <Typography color="textPrimary" variant="subtitle1">{genre?.name}</Typography>
             </Link>
