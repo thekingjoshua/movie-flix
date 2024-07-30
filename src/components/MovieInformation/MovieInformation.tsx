@@ -1,10 +1,11 @@
-import {Grid, Box, CircularProgress, styled, Typography, Rating} from '@mui/material'
+import {Grid, Box, CircularProgress, styled, Typography, Rating, ButtonGroup, Button} from '@mui/material'
 import {Link, useParams} from 'react-router-dom'
 import { useGetMovieQuery } from '../../services/TMDB'
 import {useTheme} from '@mui/material'
 import genreIcons from '../../assets/genres'
 import { useDispatch } from 'react-redux'
 import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
+import { Language } from '@mui/icons-material'
 
 
 const CImg = styled('img')(({theme}) => ({
@@ -59,7 +60,8 @@ const MovieInformation = () => {
       width: '100%',
       maxWidth: '7em',
       heigth: '8em'
-    }
+    },
+    buttonsContainer:{}
   }
 
   if(isFetching) {
@@ -115,6 +117,17 @@ const MovieInformation = () => {
                 <Typography color="textSecondary">'{character?.character.split('/')[0]}'</Typography>
               </Grid>
           )).slice(0, 6)}
+        </Grid>
+        <Grid item container style={{marginTop: '2rem'}}>
+          <div style={classes.buttonsContainer}>
+            <Grid item xs={12} sm={6} style={classes.buttonsContainer}>
+              <ButtonGroup size="small" variant="outlined">
+                <Button target='_blank' rel='noopener noreferrer' href={data?.homepage} endIcon={<Language/>}>
+                  Website
+                </Button>
+              </ButtonGroup>
+            </Grid>
+          </div>
         </Grid>
       </Grid>
     </Grid>
