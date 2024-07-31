@@ -34,7 +34,7 @@ const MovieInformation = () => {
 
   const classes = {
     containerSpaceAround: { 
-      display: 'flex', justifyContent: 'space-evenly', alignItems: 'flex-start', width: '100%', margin: '100px 300px 0 10px !important',
+      display: 'flex', justifyContent: 'space-evenly', alignItems: 'flex-start', width: '100%', margin: '10px 10px !important',
       [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       flexWrap: 'wrap',
