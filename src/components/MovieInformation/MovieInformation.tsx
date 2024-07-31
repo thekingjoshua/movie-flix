@@ -61,7 +61,14 @@ const MovieInformation = () => {
       maxWidth: '7em',
       heigth: '8em'
     },
-    buttonsContainer:{}
+    buttonsContainer:{
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      [theme.breakpoints.down('sm')]: {
+        flexDirection: 'column'
+      }
+    }
   }
 
   const isMovieFavourited = false
