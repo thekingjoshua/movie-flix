@@ -9,7 +9,6 @@ import {ArrowBack, Favorite, FavoriteBorderOutlined, Language, MovieCreation, Pl
 
 
 const CImg = styled('img')(({theme}) => ({
-  // display: 'flex', justifyContent: 'center', alignItems: 'center',
   borderRadius: '20px',
   boxShadow: '0.5em 1em 1em rgb(64, 64, 70)', 
   width: '80%', 
@@ -35,7 +34,7 @@ const MovieInformation = () => {
 
   const classes = {
     containerSpaceAround: { 
-      display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start', width: '100%', margin: '10px 10px !important',
+      display: 'flex', justifyContent: 'space-evenly', alignItems: 'flex-start', width: '100%', margin: '100px 300px 0 10px !important',
       [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       flexWrap: 'wrap',
@@ -99,7 +98,7 @@ const MovieInformation = () => {
       <Grid item sm={12} lg={4}>
         <CImg src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`} alt={data?.title} />
       </Grid>
-      <Grid item container direction="column" lg={7}>
+      <Grid item container direction="column" lg={7} style={{marginRight: '50px'}}>
         <Typography variant="h3" align='center' gutterBottom> {data?.title} ({data?.release_date.split('-')[0]})</Typography>
         <Typography variant="h5" align='center' gutterBottom> {data?.tagline}</Typography>
         <Grid item style={classes.containerSpaceAround}>
