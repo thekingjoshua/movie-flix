@@ -5,7 +5,7 @@ import {useTheme} from '@mui/material'
 import genreIcons from '../../assets/genres'
 import { useDispatch } from 'react-redux'
 import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
-import { Language, MovieCreation } from '@mui/icons-material'
+import { Language, MovieCreation, Theaters } from '@mui/icons-material'
 
 
 const CImg = styled('img')(({theme}) => ({
@@ -124,6 +124,7 @@ const MovieInformation = () => {
               <ButtonGroup size="small" variant="outlined">
                 <Button target='_blank' rel='noopener noreferrer' href={data?.homepage} endIcon={<Language/>}>Website</Button>
                 <Button target='_blank' rel='noopener noreferrer' href={`https://www.imdb.com/title/${data?.imdb_id}`} endIcon={<MovieCreation/>}>IMDB</Button>
+                <Button onClick={() => {}} href="#" endIcon={<Theaters/>}>Trailer</Button>
               </ButtonGroup>
             </Grid>
           </div>
