@@ -61,9 +61,6 @@ const MovieInformation = () => {
       heigth: '8em'
     },
     buttonsContainer:{
-      display: 'flex',
-      justifyContent: 'space-between',
-      flexDirection: 'column',
       width: '100%',
       [theme.breakpoints.down('sm')]: {
         flexDirection: 'column'
