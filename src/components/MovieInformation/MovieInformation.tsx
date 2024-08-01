@@ -50,7 +50,7 @@ const MovieInformation = () => {
       marginBottom: 0
     },
     genresContainer: {margin: '25px 0 !imporant', display: 'flex', justifyContent: 'space-around', paddingTop: '2rem'},
-    links: {display: 'flex', justifyContent: 'center', alignItems: 'center',   
+    links: {display: 'flex', justifyContent: 'center', alignItems: 'center', textDecoration: 'none',
       [theme.breakpoints.down('sm')]: {
         padding: '0.5rem 1rem'
     }},
@@ -110,7 +110,7 @@ const MovieInformation = () => {
           {data?.genres?.map((genre: {name: string, id: number}) => (
             <Link key={genre?.name} style={classes.links} to='/' onClick={() => dispatch(selectGenreOrCategory(genre.id))}>
               <img src={genreIcons[genre.name.toLowerCase() as GenreKeys]} style={classes.genreImage} height={30} />
-              <Typography color="textPrimary" variant="subtitle1">{genre?.name}</Typography>
+              <Typography color="textPrimary" variant="subtitle1" style={{textDecoration: 'none'}}>{genre?.name}</Typography>
             </Link>
           ))}
         </Grid>
