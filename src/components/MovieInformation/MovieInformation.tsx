@@ -1,4 +1,4 @@
-import {Grid, Box, CircularProgress, styled, Typography, Rating, ButtonGroup, Button} from '@mui/material'
+import {Grid, Box, CircularProgress, styled, Typography, Rating, ButtonGroup, Button, Modal} from '@mui/material'
 import {Link, useParams} from 'react-router-dom'
 import { useGetMovieQuery, useGetRecommendationsQuery } from '../../services/TMDB'
 import {useTheme} from '@mui/material'
@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
 import {ArrowBack, Favorite, FavoriteBorderOutlined, Language, MovieCreation, PlusOne, Remove, Theaters } from '@mui/icons-material'
 import MovieList from '../MovieList/MovieList'
+import { useState } from 'react'
 
 
 const CImg = styled('img')(({theme}) => ({
@@ -31,6 +32,7 @@ const MovieInformation = () => {
   const {data: recommendations, isFetching: isFetchingRecommendations} = useGetRecommendationsQuery({list: '/recommendations', movie_id: id})
   const theme = useTheme()
   const dispatch = useDispatch()
+  const [open, setOpen] = useState<boolean>(false)
 
   console.log(data)
   console.log(recommendations)
@@ -68,7 +70,8 @@ const MovieInformation = () => {
       [theme.breakpoints.down('sm')]: {
         flexDirection: 'column'
       }
-    }
+    }, 
+    modal: {}
   }
 
   const isMovieFavourited = false
@@ -156,6 +159,8 @@ const MovieInformation = () => {
           <Typography variant="h3" gutterBottom align='center'> You might also like</Typography>
           {recommendations ? <MovieList movies={recommendations} numberofMovies={12}/> : <Box>No recommendations here</Box>}
       </Box>
+      <Modal closeAfterTransition style={classes.modal} open={open}>
+      </Modal>
     </Grid>
   )
 }
