@@ -21,7 +21,7 @@ const Movies = () => {
   const [page, setPage] = useState<number>(1)
   const {genreIdOrCategoryName, searchQuery}  = useSelector((state: RootState) => state.currentGenreOrCategory)
   const { data, error, isFetching } = useGetMoviesQuery({genreIdOrCategoryName, page, searchQuery})
- 
+
 
   if(isFetching){
     return (
@@ -44,7 +44,7 @@ const Movies = () => {
 
   return (
     <div>
-      <MovieList movies={data}/>
+      <MovieList movies={data} numberofMovies={data?.results.length}/>
     </div>
   )
 }
