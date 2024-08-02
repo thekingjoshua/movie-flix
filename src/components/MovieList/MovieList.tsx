@@ -4,10 +4,11 @@ import {Movie} from '../index'
 type MovieListProps = {
     movies: {
         results: []
-    }
+    }, 
+    numberofMovies: number
 }
 
-const MovieList = ({movies}: MovieListProps) => {
+const MovieList = ({movies, numberofMovies}: MovieListProps) => {
     const theme = useTheme()
     const classes = {
         moviesContainer: {
@@ -23,7 +24,7 @@ const MovieList = ({movies}: MovieListProps) => {
   
     return (
     <Grid container sx={classes.moviesContainer}>
-      {movies?.results.map((movie, i) => (
+      {movies?.results.slice(0, numberofMovies).map((movie, i) => (
         <Movie key={i} movie={movie} i={i} />
       ))}
     </Grid>
