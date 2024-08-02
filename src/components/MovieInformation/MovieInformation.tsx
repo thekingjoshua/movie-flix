@@ -133,7 +133,7 @@ const MovieInformation = () => {
               </Grid>
           )).slice(0, 6)}
         </Grid>
-        <Grid item container style={{marginTop: '2rem', marginBottom: '100px'}} >
+        <Grid item container style={{marginTop: '2rem'}} >
           <div style={classes.buttonsContainer}>
             <Grid item xs={12} sm={6} style={classes.buttonsContainer}>
               <ButtonGroup size="medium" variant="outlined">
