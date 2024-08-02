@@ -1,6 +1,6 @@
 import {Grid, Box, CircularProgress, styled, Typography, Rating, ButtonGroup, Button} from '@mui/material'
 import {Link, useParams} from 'react-router-dom'
-import { useGetMovieQuery } from '../../services/TMDB'
+import { useGetMovieQuery, useGetRecommendationsQuery } from '../../services/TMDB'
 import {useTheme} from '@mui/material'
 import genreIcons from '../../assets/genres'
 import { useDispatch } from 'react-redux'
@@ -27,10 +27,12 @@ type GenreKeys = keyof typeof genreIcons;
 const MovieInformation = () => {
   const {id} = useParams()
   const {data, isFetching, error} = useGetMovieQuery(id)
+  const {data: recommendations, isFetching: isFetchingRecommendations} = useGetRecommendationsQuery({list: '/recommendations', movie_id: id})
   const theme = useTheme()
   const dispatch = useDispatch()
 
-  console.log(data?.credits)
+  console.log(data)
+  console.log(recommendations)
 
   const classes = {
     containerSpaceAround: { 
