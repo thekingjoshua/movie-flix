@@ -6,6 +6,7 @@ import genreIcons from '../../assets/genres'
 import { useDispatch } from 'react-redux'
 import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
 import {ArrowBack, Favorite, FavoriteBorderOutlined, Language, MovieCreation, PlusOne, Remove, Theaters } from '@mui/icons-material'
+import MovieList from '../MovieList/MovieList'
 
 
 const CImg = styled('img')(({theme}) => ({
@@ -153,6 +154,7 @@ const MovieInformation = () => {
       </Grid>
       <Box marginTop="5rem" width='100%'>
           <Typography variant="h3" gutterBottom align='center'> You might also like</Typography>
+          {recommendations ? <MovieList movies={recommendations}/> : <Box>No recommendations here</Box>}
       </Box>
     </Grid>
   )
