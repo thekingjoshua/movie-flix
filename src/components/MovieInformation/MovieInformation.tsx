@@ -154,7 +154,7 @@ const MovieInformation = () => {
       </Grid>
       <Box marginTop="5rem" width='100%'>
           <Typography variant="h3" gutterBottom align='center'> You might also like</Typography>
-          {recommendations ? <MovieList movies={recommendations}/> : <Box>No recommendations here</Box>}
+          {recommendations ? <MovieList movies={recommendations} numberofMovies={10}/> : <Box>No recommendations here</Box>}
       </Box>
     </Grid>
   )
