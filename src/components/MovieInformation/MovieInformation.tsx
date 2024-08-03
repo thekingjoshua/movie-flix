@@ -36,6 +36,7 @@ const MovieInformation = () => {
 
   console.log(data)
   console.log(recommendations)
+  console.log('okay')
 
   const classes = {
     containerSpaceAround: { 
@@ -71,7 +72,8 @@ const MovieInformation = () => {
         flexDirection: 'column'
       }
     }, 
-    modal: {}
+    modal: {},
+    videos: {}
   }
 
   const isMovieFavourited = false
@@ -160,6 +162,7 @@ const MovieInformation = () => {
           {recommendations ? <MovieList movies={recommendations} numberofMovies={12}/> : <Box>No recommendations here</Box>}
       </Box>
       <Modal closeAfterTransition style={classes.modal} open={open}>
+          {data?.videos.results.length > 0 ? <iframe style={classes.videos} frameBorder='0' title="Trailer" src={`https://www.youtube.com/embed/${data.videos.results[0].key}`} allow='autoplay' /> : <p></p>}
       </Modal>
     </Grid>
   )
