@@ -156,7 +156,7 @@ const MovieInformation = () => {
               <ButtonGroup size="medium" variant="outlined">
                 <Button target='_blank' rel='noopener noreferrer' href={data?.homepage} endIcon={<Language/>}>Website</Button>
                 <Button target='_blank' rel='noopener noreferrer' href={`https://www.imdb.com/title/${data?.imdb_id}`} endIcon={<MovieCreation/>}>IMDB</Button>
-                <Button onClick={() => {}} href="#" endIcon={<Theaters/>}>Trailer</Button>
+                <Button onClick={() => {setOpen(true)}} href="#" endIcon={<Theaters/>}>Trailer</Button>
               </ButtonGroup>
             </Grid>
             <Grid item xs={12} sm={6} style={classes.buttonsContainer}>
@@ -173,7 +173,7 @@ const MovieInformation = () => {
           <Typography variant="h3" gutterBottom align='center'> You might also like</Typography>
           {recommendations ? <MovieList movies={recommendations} numberofMovies={12}/> : <Box>No recommendations here</Box>}
       </Box>
-      <Modal closeAfterTransition style={classes.modal} open={open} >
+      <Modal closeAfterTransition style={classes.modal} open={open} onClose={() => setOpen(false)}>
           {data?.videos.results.length > 0 ? <iframe style={classes.video} frameBorder='0' title="Trailer" src={`https://www.youtube.com/embed/${data.videos.results[0].key}`} allow='autoplay' /> : <p></p>}
       </Modal>
     </Grid>
