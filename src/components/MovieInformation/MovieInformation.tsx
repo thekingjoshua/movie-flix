@@ -36,6 +36,7 @@ const MovieInformation = () => {
 
   console.log(data)
   console.log(recommendations)
+  console.log('okay')
 
 
   const classes = {
@@ -77,7 +78,14 @@ const MovieInformation = () => {
       alignItems: 'center',
       justifyContent: 'center'
     },
-    videos: {}
+    video: {
+      width: '50%',
+      height: '50%',
+      [theme.breakpoints.down('sm')]: {
+      width: '90%',
+      height: '90%'
+      }
+    }
   }
 
   const isMovieFavourited = false
@@ -165,8 +173,8 @@ const MovieInformation = () => {
           <Typography variant="h3" gutterBottom align='center'> You might also like</Typography>
           {recommendations ? <MovieList movies={recommendations} numberofMovies={12}/> : <Box>No recommendations here</Box>}
       </Box>
-      <Modal closeAfterTransition style={classes.modal} open={open}>
-          {data?.videos.results.length > 0 ? <iframe style={classes.videos} frameBorder='0' title="Trailer" src={`https://www.youtube.com/embed/${data.videos.results[0].key}`} allow='autoplay' /> : <p></p>}
+      <Modal closeAfterTransition style={classes.modal} open={open} >
+          {data?.videos.results.length > 0 ? <iframe style={classes.video} frameBorder='0' title="Trailer" src={`https://www.youtube.com/embed/${data.videos.results[0].key}`} allow='autoplay' /> : <p></p>}
       </Modal>
     </Grid>
   )
