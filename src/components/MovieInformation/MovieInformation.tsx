@@ -36,7 +36,7 @@ const MovieInformation = () => {
 
   console.log(data)
   console.log(recommendations)
-  console.log('okay')
+
 
   const classes = {
     containerSpaceAround: { 
@@ -72,7 +72,11 @@ const MovieInformation = () => {
         flexDirection: 'column'
       }
     }, 
-    modal: {},
+    modal: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
     videos: {}
   }
 
