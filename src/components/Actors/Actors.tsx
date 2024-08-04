@@ -53,6 +53,8 @@ const Actors = () => {
       <Grid item container direction="column" lg={12} sm={12} style={{marginTop: '50px'}}>
         <Typography variant="h3" align='left' gutterBottom> {data?.name}</Typography>
         <Typography variant="h5" align='left' gutterBottom>Born: {data?.birthday}</Typography>
+        <Typography variant="subtitle2" align='left' gutterBottom>{data?.biography}</Typography>
+
       </Grid>
     </Grid>
   )
