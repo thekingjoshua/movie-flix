@@ -1,10 +1,11 @@
 import { Link, useParams } from "react-router-dom"
-import { useGetActorQuery } from "../../services/TMDB"
+import { useGetActorLinkQuery, useGetActorQuery } from "../../services/TMDB"
 import { Box, Button, ButtonGroup, CircularProgress, Grid, styled, Typography, useTheme } from "@mui/material"
 
 const Actors = () => {
   const {id} = useParams()
   const {data, isFetching, error} =  useGetActorQuery(id)
+  const {data: actorLink, isFetching: isFetchingActorLink,} =  useGetActorLinkQuery(id)
   const theme = useTheme()
   const classes = {
     containerSpaceAround: { 
@@ -29,6 +30,7 @@ const Actors = () => {
   }))
 
   console.log(data)
+  console.log(actorLink.imdb_id)
 
   if(isFetching) {
     return (
@@ -54,7 +56,10 @@ const Actors = () => {
         <Typography variant="h3" align='left' gutterBottom> {data?.name}</Typography>
         <Typography variant="h5" align='left' gutterBottom>Born: {data?.birthday}</Typography>
         <Typography variant="subtitle2" align='left' gutterBottom>{data?.biography}</Typography>
-
+        <ButtonGroup style={{justifyContent: 'space-between'}}>
+            <Button target="_blank" href={`https://www.imdb.com/name/${actorLink.imdb_id}/`}>IMDB</Button>
+            <Button href="/">IMDB</Button>
+        </ButtonGroup>
       </Grid>
     </Grid>
   )
