@@ -57,7 +57,7 @@ const Actors = () => {
         <Typography variant="h3" align='left' gutterBottom> {data?.name}</Typography>
         <Typography variant="h5" align='left' gutterBottom>Born: {data?.birthday}</Typography>
         <Typography variant="subtitle2" align='left' gutterBottom>{data?.biography}</Typography>
-        <ButtonGroup style={{justifyContent: 'space-between'}}>
+        <ButtonGroup style={{justifyContent: 'space-around'}}>
             <Button target="_blank" href={`https://www.imdb.com/name/${actorLink?.imdb_id}/`}>IMDB</Button>
             <Button href="/" startIcon={<ArrowBack/>}>Back</Button>
         </ButtonGroup>
