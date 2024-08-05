@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom"
 import { useGetActorLinkQuery, useGetActorQuery } from "../../services/TMDB"
 import { Box, Button, ButtonGroup, CircularProgress, Grid, styled, Typography, useTheme } from "@mui/material"
+import { ArrowBack } from "@mui/icons-material"
 
 const Actors = () => {
   const {id} = useParams()
@@ -58,7 +59,7 @@ const Actors = () => {
         <Typography variant="subtitle2" align='left' gutterBottom>{data?.biography}</Typography>
         <ButtonGroup style={{justifyContent: 'space-between'}}>
             <Button target="_blank" href={`https://www.imdb.com/name/${actorLink?.imdb_id}/`}>IMDB</Button>
-            <Button href="/">IMDB</Button>
+            <Button href="/" startIcon={<ArrowBack/>}>Back</Button>
         </ButtonGroup>
       </Grid>
     </Grid>
