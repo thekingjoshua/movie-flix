@@ -56,7 +56,7 @@ const Actors = () => {
         <Typography variant="body2" align='left' paragraph>{data?.biography || 'Sorry, no biography yet...'}</Typography>
         <Box marginTop="2rem" display="flex" justifyContent="space-around">
           <Button variant="contained" color="primary" target="_blank" href={`https://www.imdb.com/name/${data?.imdb_id}/`}>IMDB</Button>
-          <Button href="/" startIcon={<ArrowBack/>}>Back</Button>
+          <Button onClick={() => navigate(-1)}  startIcon={<ArrowBack/>}> Back</Button>
         </Box>
       </Grid>
     </Grid>
