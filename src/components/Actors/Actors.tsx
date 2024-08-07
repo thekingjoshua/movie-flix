@@ -1,13 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom"
-import { useGetActorMovieCreditsQuery, useGetActorQuery } from "../../services/TMDB"
-import { Box, Button, ButtonGroup, CircularProgress, Grid, styled, Typography, useTheme } from "@mui/material"
+import { useGetMoviesByActorIdQuery, useGetActorQuery } from "../../services/TMDB"
+import { Box, Button, CircularProgress, Grid, styled, Typography, useTheme } from "@mui/material"
 import { ArrowBack } from "@mui/icons-material"
 
 const Actors = () => {
   const {id} = useParams()
   const navigate = useNavigate()
+  const page = 1
   const {data, isFetching, error} =  useGetActorQuery(id)
-  const {data: actorCredit, isFetching: isFetchingActorCredits} =  useGetActorMovieCreditsQuery(id)
+  const {data: actorMovies, isFetching: isFetchingActorMovie} =  useGetMoviesByActorIdQuery({id, page})
   const theme = useTheme()
   const classes = {
     containerSpaceAround: { 
@@ -26,7 +27,6 @@ const Actors = () => {
   }))
 
   console.log(data)
-  console.log(actorCredit)
 
   if(isFetching) {
     return (
@@ -46,6 +46,7 @@ const Actors = () => {
   }
 
   return (
+    <>
     <Grid container spacing={3}>
       <Grid item lg={5} xl={4}>
         <CImg src={`https://image.tmdb.org/t/p/w780${data?.profile_path}`} alt={data?.name} />
@@ -60,6 +61,10 @@ const Actors = () => {
         </Box>
       </Grid>
     </Grid>
+    <Box margin="2rem 0">
+      <Typography variant="h2" gutterBottom align="center">Movies</Typography>
+    </Box>
+    </>
   )
 }
 
