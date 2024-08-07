@@ -27,8 +27,6 @@ const Actors = () => {
     boxShadow: '0.5em 0.5em 1em'
   }))
 
-  console.log(data)
-
   if(isFetching) {
     return (
       <Box display='flex' justifyContent='center' alignItems='center'>
