@@ -1,12 +1,14 @@
-import { Link, useParams } from "react-router-dom"
-import { useGetActorLinkQuery, useGetActorQuery } from "../../services/TMDB"
+import { useParams, useNavigate } from "react-router-dom"
+import { useGetActorLinkQuery, useGetActorMovieCreditsQuery, useGetActorQuery } from "../../services/TMDB"
 import { Box, Button, ButtonGroup, CircularProgress, Grid, styled, Typography, useTheme } from "@mui/material"
 import { ArrowBack } from "@mui/icons-material"
 
 const Actors = () => {
   const {id} = useParams()
+  const navigate = useNavigate()
   const {data, isFetching, error} =  useGetActorQuery(id)
   const {data: actorLink, isFetching: isFetchingActorLink,} =  useGetActorLinkQuery(id)
+  const {data: actorCredit, isFetching: isFetchingActorCredits} =  useGetActorMovieCreditsQuery(id)
   const theme = useTheme()
   const classes = {
     containerSpaceAround: { 
@@ -32,6 +34,7 @@ const Actors = () => {
 
   console.log(data)
   console.log(actorLink?.imdb_id)
+  console.log(actorCredit)
 
   if(isFetching) {
     return (
@@ -43,7 +46,9 @@ const Actors = () => {
   if(error) {
     return (
       <Box display='flex' justifyContent='center' alignItems='center'>
-        <Link to="/">An error occurred while fetching actor detail, go back</Link>
+      <Button startIcon={<ArrowBack/>} onClick={() => navigate(-1)}>
+        Go back
+      </Button>
       </Box>
     )
   }
@@ -61,6 +66,7 @@ const Actors = () => {
             <Button target="_blank" href={`https://www.imdb.com/name/${actorLink?.imdb_id}/`}>IMDB</Button>
             <Button href="/" startIcon={<ArrowBack/>}>Back</Button>
         </ButtonGroup>
+        {}
       </Grid>
     </Grid>
   )
