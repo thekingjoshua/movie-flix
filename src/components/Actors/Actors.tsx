@@ -52,15 +52,14 @@ const Actors = () => {
       <Grid item lg={5} xl={4}>
         <CImg src={`https://image.tmdb.org/t/p/w780${data?.profile_path}`} alt={data?.name} />
       </Grid>
-      <Grid item container direction="column" lg={7} xl={8} style={{marginTop: '50px'}}>
+      <Grid item  lg={7} xl={8} style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
         <Typography variant="h2" gutterBottom> {data?.name}</Typography>
-        <Typography variant="h5" align='left' gutterBottom>Born: {data?.birthday}</Typography>
+        <Typography variant="h5" align='left' gutterBottom>Born: {new Date(data?.birthday).toDateString()}</Typography>
         <Typography variant="subtitle2" align='left' gutterBottom>{data?.biography}</Typography>
         <ButtonGroup style={{justifyContent: 'space-around'}}>
             <Button target="_blank" href={`https://www.imdb.com/name/${actorLink?.imdb_id}/`}>IMDB</Button>
             <Button href="/" startIcon={<ArrowBack/>}>Back</Button>
         </ButtonGroup>
-        {}
       </Grid>
     </Grid>
   )
