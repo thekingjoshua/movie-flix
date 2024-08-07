@@ -56,7 +56,7 @@ const Actors = () => {
   return (
     <Grid style={classes.containerSpaceAround}>
       <Grid item sm={12} lg={4}>
-        <CImg src={`https://image.tmdb.org/t/p/w500${data?.profile_path}`} alt={data?.name} />
+        <CImg src={`https://image.tmdb.org/t/p/w780${data?.profile_path}`} alt={data?.name} />
       </Grid>
       <Grid item container direction="column" lg={12} sm={12} style={{marginTop: '50px'}}>
         <Typography variant="h3" align='left' gutterBottom> {data?.name}</Typography>
