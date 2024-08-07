@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom"
-import { useGetActorLinkQuery, useGetActorMovieCreditsQuery, useGetActorQuery } from "../../services/TMDB"
+import { useGetActorMovieCreditsQuery, useGetActorQuery } from "../../services/TMDB"
 import { Box, Button, ButtonGroup, CircularProgress, Grid, styled, Typography, useTheme } from "@mui/material"
 import { ArrowBack } from "@mui/icons-material"
 
@@ -7,7 +7,6 @@ const Actors = () => {
   const {id} = useParams()
   const navigate = useNavigate()
   const {data, isFetching, error} =  useGetActorQuery(id)
-  const {data: actorLink, isFetching: isFetchingActorLink,} =  useGetActorLinkQuery(id)
   const {data: actorCredit, isFetching: isFetchingActorCredits} =  useGetActorMovieCreditsQuery(id)
   const theme = useTheme()
   const classes = {
@@ -27,7 +26,6 @@ const Actors = () => {
   }))
 
   console.log(data)
-  console.log(actorLink?.imdb_id)
   console.log(actorCredit)
 
   if(isFetching) {
@@ -55,11 +53,11 @@ const Actors = () => {
       <Grid item  lg={7} xl={8} style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
         <Typography variant="h2" gutterBottom> {data?.name}</Typography>
         <Typography variant="h5" align='left' gutterBottom>Born: {new Date(data?.birthday).toDateString()}</Typography>
-        <Typography variant="body2" align='justify' paragraph>{data?.biography}</Typography>
-        <ButtonGroup style={{justifyContent: 'space-around'}}>
-            <Button target="_blank" href={`https://www.imdb.com/name/${actorLink?.imdb_id}/`}>IMDB</Button>
-            <Button href="/" startIcon={<ArrowBack/>}>Back</Button>
-        </ButtonGroup>
+        <Typography variant="body2" align='left' paragraph>{data?.biography || 'Sorry, no biography yet...'}</Typography>
+        <Box marginTop="2rem" display="flex" justifyContent="space-around">
+          <Button variant="contained" color="primary" target="_blank" href={`https://www.imdb.com/name/${data?.imdb_id}/`}>IMDB</Button>
+          <Button href="/" startIcon={<ArrowBack/>}>Back</Button>
+        </Box>
       </Grid>
     </Grid>
   )
