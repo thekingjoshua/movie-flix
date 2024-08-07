@@ -19,17 +19,11 @@ const Actors = () => {
       backgroundColor: 'red'
     }}
   }
-  const CImg = styled('img')(({theme}) => ({
+  const CImg = styled('img')(() => ({
+    maxWidth: '90%',
     borderRadius: '20px',
-    boxShadow: '0.5em 1em 1em rgb(64, 64, 70)', 
-    width: '80%', 
-    [theme.breakpoints.down('md')]: {
-      height: '350px',
-    },
-    [theme.breakpoints.down('sm')]: {
-      width: '100%', 
-      marginBottom: '30px',
-    },
+    objectFit: 'cover',
+    boxShadow: '0.5em 0.5em 1em'
   }))
 
   console.log(data)
@@ -54,12 +48,12 @@ const Actors = () => {
   }
 
   return (
-    <Grid style={classes.containerSpaceAround}>
-      <Grid item sm={12} lg={4}>
+    <Grid container spacing={3}>
+      <Grid item lg={5} xl={4}>
         <CImg src={`https://image.tmdb.org/t/p/w780${data?.profile_path}`} alt={data?.name} />
       </Grid>
-      <Grid item container direction="column" lg={12} sm={12} style={{marginTop: '50px'}}>
-        <Typography variant="h3" align='left' gutterBottom> {data?.name}</Typography>
+      <Grid item container direction="column" lg={7} xl={8} style={{marginTop: '50px'}}>
+        <Typography variant="h2" gutterBottom> {data?.name}</Typography>
         <Typography variant="h5" align='left' gutterBottom>Born: {data?.birthday}</Typography>
         <Typography variant="subtitle2" align='left' gutterBottom>{data?.biography}</Typography>
         <ButtonGroup style={{justifyContent: 'space-around'}}>
