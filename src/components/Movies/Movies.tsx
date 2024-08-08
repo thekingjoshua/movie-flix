@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux'
 
 
 import { useGetMoviesQuery } from '../../services/TMDB'
-import {MovieList} from '../index'
+import {MovieList, Pagination} from '../index'
 import Loader from '../Loader/Loader'
 
 
@@ -45,6 +45,7 @@ const Movies = () => {
   return (
     <div>
       <MovieList movies={data} numberofMovies={data?.results.length}/>
+      <Pagination/>
     </div>
   )
 }
