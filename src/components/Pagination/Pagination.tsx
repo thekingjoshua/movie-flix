@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { Button, Typography, useTheme } from '@mui/material'
 
-const Pagination = () => {
+
+type PaginationProps = {
+    currentPage: number,
+    setPage: Dispatch<SetStateAction<number>>
+}
+const Pagination = (props: PaginationProps) => {
     const theme = useTheme()
     
     const classes = {
@@ -19,6 +24,12 @@ const Pagination = () => {
         },
     }
     const currentPage = 1
+    const handlePrev = () => {
+        
+    }
+    const handleNext = () => {
+
+    }
 
 
   return (
