@@ -32,6 +32,7 @@ const Pagination = (props: PaginationProps) => {
 
     }
 
+    if(props.totalPages === 0) return null
 
   return (
     <div style={classes.container}>
