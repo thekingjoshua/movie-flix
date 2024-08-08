@@ -45,7 +45,7 @@ const Movies = () => {
   return (
     <div>
       <MovieList movies={data} numberofMovies={data?.results.length}/>
-      <Pagination currentPage={page} setPage={setPage}/>
+      <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
     </div>
   )
 }

@@ -4,7 +4,8 @@ import { Button, Typography, useTheme } from '@mui/material'
 
 type PaginationProps = {
     currentPage: number,
-    setPage: Dispatch<SetStateAction<number>>
+    setPage: Dispatch<SetStateAction<number>>,
+    totalPages: number
 }
 const Pagination = (props: PaginationProps) => {
     const theme = useTheme()
