@@ -5,6 +5,7 @@ import { ArrowBack } from "@mui/icons-material"
 import MovieList from "../MovieList/MovieList"
 import Pagination from "../Pagination/Pagination"
 import { useState } from "react"
+import Loader from "../Loader/Loader"
 
 const Actors = () => {
   const {id} = useParams()
@@ -23,7 +24,7 @@ const Actors = () => {
   if(isFetching) {
     return (
       <Box display='flex' justifyContent='center' alignItems='center'>
-        <CircularProgress size="8rem"/>
+        <Loader />
       </Box>
     )
   }
