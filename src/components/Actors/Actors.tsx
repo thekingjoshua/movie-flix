@@ -3,6 +3,7 @@ import { useGetMoviesByActorIdQuery, useGetActorQuery } from "../../services/TMD
 import { Box, Button, CircularProgress, Grid, styled, Typography, useTheme } from "@mui/material"
 import { ArrowBack } from "@mui/icons-material"
 import MovieList from "../MovieList/MovieList"
+import Pagination from "../Pagination/Pagination"
 
 const Actors = () => {
   const {id} = useParams()
@@ -63,6 +64,7 @@ const Actors = () => {
     <Box margin="2rem 0">
       <Typography variant="h2" gutterBottom align="center">Movies</Typography>
       {actorMovies && <MovieList movies={actorMovies} numberofMovies={12} />}
+      <Pagination />
     </Box>
     </>
   )
