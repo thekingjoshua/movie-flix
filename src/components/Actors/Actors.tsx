@@ -65,6 +65,7 @@ const Actors = () => {
     </Grid>
     <Box margin="2rem 0">
       <Typography variant="h2" gutterBottom align="center">Movies</Typography>
+      {isFetchingActorMovie && <p>Loading...</p>}
       {actorMovies && <MovieList movies={actorMovies} numberofMovies={12} />}
       <Pagination currentPage={page} setPage={setPage} totalPages={actorMovies?.total_pages}/>
     </Box>
