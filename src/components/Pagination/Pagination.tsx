@@ -31,7 +31,9 @@ const Pagination = ({currentPage, setPage, totalPages}: PaginationProps) => {
         }
     }
     const handleNext = () => {
-        setPage((prev) => prev + 1)
+        if(currentPage !== totalPages){
+            setPage((prev) => prev + 1)
+        }
     }
 
     if(totalPages === 0) return null
