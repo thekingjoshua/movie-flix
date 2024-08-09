@@ -9,6 +9,7 @@ import { useState } from "react"
 const Actors = () => {
   const {id} = useParams()
   const navigate = useNavigate()
+  const [page, setPage] = useState<number>(1)
   const {data, isFetching, error} =  useGetActorQuery(id)
   const {data: actorMovies, isFetching: isFetchingActorMovie} =  useGetMoviesByActorIdQuery({id, page})
   const theme = useTheme()
