@@ -7,7 +7,8 @@ type PaginationProps = {
     setPage: Dispatch<SetStateAction<number>>,
     totalPages: number
 }
-const Pagination = (props: PaginationProps) => {
+
+const Pagination = ({currentPage, setPage, totalPages}: PaginationProps) => {
     const theme = useTheme()
     
     const classes = {
@@ -24,19 +25,18 @@ const Pagination = (props: PaginationProps) => {
             color: theme.palette.text.primary
         },
     }
-    const currentPage = 1
     const handlePrev = () => {
-        
+        setPage((prev) => prev - 1)
     }
     const handleNext = () => {
 
     }
 
-    if(props.totalPages === 0) return null
+    if(totalPages === 0) return null
 
   return (
     <div style={classes.container}>
-        <Button style={classes.button} variant='contained' color="primary" type="button">Previous</Button>
+        <Button style={classes.button} variant='contained' color="primary" type="button" onClick={handlePrev}>Previous</Button>
         <Typography variant="h4" style={classes.pageNumber}>{currentPage}</Typography>
         <Button style={classes.button} variant='contained' color="primary" type="button">Next</Button>
     </div>
