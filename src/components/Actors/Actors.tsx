@@ -4,14 +4,15 @@ import { Box, Button, CircularProgress, Grid, styled, Typography, useTheme } fro
 import { ArrowBack } from "@mui/icons-material"
 import MovieList from "../MovieList/MovieList"
 import Pagination from "../Pagination/Pagination"
+import { useState } from "react"
 
 const Actors = () => {
   const {id} = useParams()
   const navigate = useNavigate()
-  const page = 1
   const {data, isFetching, error} =  useGetActorQuery(id)
   const {data: actorMovies, isFetching: isFetchingActorMovie} =  useGetMoviesByActorIdQuery({id, page})
   const theme = useTheme()
+
   const classes = {
     containerSpaceAround: { 
       display: 'flex', justifyContent: 'space-evenly', alignItems: 'flex-start', width: '100%', margin: '10px 10px !important',
