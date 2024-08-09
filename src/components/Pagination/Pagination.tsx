@@ -29,7 +29,7 @@ const Pagination = ({currentPage, setPage, totalPages}: PaginationProps) => {
         setPage((prev) => prev - 1)
     }
     const handleNext = () => {
-
+        setPage((prev) => prev + 1)
     }
 
     if(totalPages === 0) return null
@@ -38,7 +38,7 @@ const Pagination = ({currentPage, setPage, totalPages}: PaginationProps) => {
     <div style={classes.container}>
         <Button style={classes.button} variant='contained' color="primary" type="button" onClick={handlePrev}>Previous</Button>
         <Typography variant="h4" style={classes.pageNumber}>{currentPage}</Typography>
-        <Button style={classes.button} variant='contained' color="primary" type="button">Next</Button>
+        <Button style={classes.button} variant='contained' color="primary" type="button" onClick={handleNext}>Next</Button>
     </div>
   )
 }
