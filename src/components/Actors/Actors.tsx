@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useGetMoviesByActorIdQuery, useGetActorQuery } from "../../services/TMDB"
-import { Box, Button, CircularProgress, Grid, styled, Typography, useTheme } from "@mui/material"
+import { Box, Button, CircularProgress, Grid, styled, Typography } from "@mui/material"
 import { ArrowBack } from "@mui/icons-material"
 import MovieList from "../MovieList/MovieList"
 import Pagination from "../Pagination/Pagination"
@@ -12,17 +12,7 @@ const Actors = () => {
   const [page, setPage] = useState<number>(1)
   const {data, isFetching, error} =  useGetActorQuery(id)
   const {data: actorMovies, isFetching: isFetchingActorMovie} =  useGetMoviesByActorIdQuery({id, page})
-  const theme = useTheme()
 
-  const classes = {
-    containerSpaceAround: { 
-      display: 'flex', justifyContent: 'space-evenly', alignItems: 'flex-start', width: '100%', margin: '10px 10px !important',
-      [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
-      flexWrap: 'wrap',
-      backgroundColor: 'red'
-    }}
-  }
   const CImg = styled('img')(() => ({
     maxWidth: '90%',
     borderRadius: '20px',
