@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useGetMoviesByActorIdQuery, useGetActorQuery } from "../../services/TMDB"
-import { Box, Button, CircularProgress, Grid, styled, Typography } from "@mui/material"
+import { Box, Button, Grid, styled, Typography } from "@mui/material"
 import { ArrowBack } from "@mui/icons-material"
 import MovieList from "../MovieList/MovieList"
 import Pagination from "../Pagination/Pagination"
