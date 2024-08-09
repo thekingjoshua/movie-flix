@@ -1,14 +1,11 @@
-import {useState, useEffect} from 'react'
-import {Box, CircularProgress, useMediaQuery, Typography} from '@mui/material'
+import {useState} from 'react'
+import {Box, Typography} from '@mui/material'
 import {useSelector} from 'react-redux'
 
 
 import { useGetMoviesQuery } from '../../services/TMDB'
 import {MovieList, Pagination} from '../index'
 import Loader from '../Loader/Loader'
-
-
-import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
 
 type RootState = {
   currentGenreOrCategory: {
@@ -26,7 +23,6 @@ const Movies = () => {
   if(isFetching){
     return (
       <Box display="flex" justifyContent='center'>
-        {/* <CircularProgress size="4rem" /> */}
         <Loader />
       </Box>
     )
