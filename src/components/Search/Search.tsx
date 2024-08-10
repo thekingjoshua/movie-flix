@@ -36,6 +36,10 @@ const Search = () => {
     const theme = useTheme()
     const [query, setQuery] =  useState<string>()
     const dispatch = useDispatch()
+    const location  = useLocation()
+
+    if(location.pathname !== '/') return null
+    
     const classes = {
         input: { color: theme.palette.mode === 'light' ? 'white' : 'black', filter: theme.palette.mode === 'light' ? 'light' : 'invert(1)', [theme.breakpoints.down('sm')]: { marginTop: '-10px', marginBottom: '10px'}},
         searchIcon: { color: theme.palette.mode === 'light' ? 'white' : 'black'}
@@ -46,6 +50,7 @@ const Search = () => {
         }
 
     }
+
     return (
         <SearchContainer>
 
