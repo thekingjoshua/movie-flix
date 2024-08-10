@@ -91,9 +91,9 @@ const MovieInformation = () => {
   const isMovieFavourited = false
   const isMovieWatchListed = false
 
-  const addToFavourites = () => {}
+  const addToFavourites = async () => {}
 
-  const addToWatchList = () => {}
+  const addToWatchList = async () => {}
 
 
   if(isFetching) {
