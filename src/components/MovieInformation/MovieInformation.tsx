@@ -37,6 +37,7 @@ const MovieInformation = () => {
   const theme = useTheme()
   const dispatch = useDispatch()
   const [open, setOpen] = useState<boolean>(false)
+  const [isMovieFavorited, setIsMovieFavorited] = useState<boolean>(false)
 
   console.log(data)
   console.log(recommendations)
