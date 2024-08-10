@@ -7,3 +7,7 @@
 ::-webkit-scrollbar-thumb{
     background-color: #a5a5a5;
 }
+
+*{
+    text-decoration: none;
+}
