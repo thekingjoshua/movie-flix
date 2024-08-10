@@ -3,11 +3,14 @@ import {Link, useParams} from 'react-router-dom'
 import { useGetMovieQuery, useGetRecommendationsQuery } from '../../services/TMDB'
 import {useTheme} from '@mui/material'
 import genreIcons from '../../assets/genres'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
 import {ArrowBack, Favorite, FavoriteBorderOutlined, Language, MovieCreation, PlusOne, Remove, Theaters } from '@mui/icons-material'
 import MovieList from '../MovieList/MovieList'
 import { useState } from 'react'
+import axios from 'axios'
+import { userSelector } from '../../features/auth'
+
 
 
 const CImg = styled('img')(({theme}) => ({
@@ -28,6 +31,7 @@ type GenreKeys = keyof typeof genreIcons;
 
 const MovieInformation = () => {
   const {id} = useParams()
+  const {user} = useSelector(userSelector)
   const {data, isFetching, error} = useGetMovieQuery(id)
   const {data: recommendations, isFetching: isFetchingRecommendations} = useGetRecommendationsQuery({list: '/recommendations', movie_id: id})
   const theme = useTheme()
@@ -91,7 +95,9 @@ const MovieInformation = () => {
   const isMovieFavourited = false
   const isMovieWatchListed = false
 
-  const addToFavourites = async () => {}
+  const addToFavourites = async () => {
+    await axios.post(`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${import.meta.env.VITE_TMBD_KEY}&session_id=${localStorage.getItem('session_id')}`)
+  }
 
   const addToWatchList = async () => {}
 
