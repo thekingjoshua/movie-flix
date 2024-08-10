@@ -123,7 +123,7 @@ const MovieInformation = () => {
           <Box sx={classes.ratingBox} >
             <Rating readOnly value={data.vote_average / 2}/>
             <Typography variant='subtitle1' style={{marginLeft: '15px'}}>{(data?.vote_average).toFixed(1) } / 10</Typography>
-            <Typography variant='h6' alignItems="center" style={{marginLeft: '40px'}}>{data?.runtime} min / {data?.spoken_languages.length > 0 ? data?.spoken_languages[0].name : ''}</Typography>
+            <Typography variant='h6' alignItems="center" style={{marginLeft: '40px'}}>{data?.runtime} min / Language: {data?.spoken_languages.length > 0 ? data?.spoken_languages[0].name : ''}</Typography>
           </Box>
         </Grid>
         <Grid style={classes.genresContainer} item >
