@@ -48,7 +48,7 @@ const MovieInformation = () => {
     }},
     ratingBox: {
       display: 'flex',
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down('md')]: {
         flexDirection: 'column',
       },
       flexDirection: 'row',
