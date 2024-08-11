@@ -94,13 +94,12 @@ const MovieInformation = () => {
     }
   }
 
-  // const isMovieFavourited = false
-  // const isMovieWatchListed = false
 
   const addToFavourites = async () => {
     await axios.post(`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${import.meta.env.VITE_TMBD_KEY}&session_id=${localStorage.getItem('session_id')}0`, {
       media_type: 'movie',
       media_id: id,
+      favourite: !isMovieFavorited
     })
   }
 
