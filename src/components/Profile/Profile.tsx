@@ -4,13 +4,20 @@ import { useSelector } from 'react-redux'
 import { ExitToApp } from '@mui/icons-material'
 import { useGetListQuery } from '../../services/TMDB'
 import {RatedCards} from '..'
+import { useEffect } from 'react'
 
 const Profile = () => {
   const {user} = useSelector(userSelector);
-  const {data: favoriteMovies} = useGetListQuery({listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
-  const {data: watchlistMovies} = useGetListQuery({listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
+  const {data: favoriteMovies, refetch: refetchFavourite} = useGetListQuery({listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
+  const {data: watchlistMovies, refetch: refetchWatchlisted} = useGetListQuery({listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
 
   console.log(favoriteMovies?.results.length)
+
+  useEffect(() => {
+    refetchFavourite()
+    refetchWatchlisted()
+  }, [])
+
 
   const logOut = () => {
     localStorage.clear()
