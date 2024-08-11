@@ -50,6 +50,11 @@ const MovieInformation = () => {
     
   }, [favoriteMovies, data])
 
+  useEffect(() => {
+    setIsMovieWatchListed(!!watchlistMovies?.results?.find((movie: {id: number}) => movie?.id === data?.id))
+
+  }, [watchlistMovies, data])
+
   console.log(data)
   console.log(recommendations)
   console.log('okay')
