@@ -36,6 +36,7 @@ const MovieInformation = () => {
   const {data, isFetching, error} = useGetMovieQuery(id)
   const {data: recommendations, isFetching: isFetchingRecommendations} = useGetRecommendationsQuery({list: '/recommendations', movie_id: id})
   const {data: favoriteMovies} = useGetListQuery({listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
+  const {data: watchlistMovies} = useGetListQuery({listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
 
   const theme = useTheme()
   const dispatch = useDispatch()
