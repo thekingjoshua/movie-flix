@@ -101,6 +101,8 @@ const MovieInformation = () => {
       media_id: id,
       favourite: !isMovieFavorited
     })
+
+    setIsMovieFavorited((prev) => !prev)
   }
 
   const addToWatchList = async () => {}
