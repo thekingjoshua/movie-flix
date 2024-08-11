@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
 import {ArrowBack, Favorite, FavoriteBorderOutlined, Language, MovieCreation, PlusOne, Remove, Theaters } from '@mui/icons-material'
 import MovieList from '../MovieList/MovieList'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { userSelector } from '../../features/auth'
 
@@ -44,6 +44,11 @@ const MovieInformation = () => {
   const [open, setOpen] = useState<boolean>(false)
   const [isMovieFavorited, setIsMovieFavorited] = useState<boolean>(false)
   const [isMovieWatchListed, setIsMovieWatchListed] = useState<boolean>(false)
+
+  useEffect(() => {
+    setIsMovieFavorited(!!favoriteMovies?.results?.find((movie: {id: number}) => movie?.id === data?.id))
+    
+  }, [favoriteMovies, data])
 
   console.log(data)
   console.log(recommendations)
