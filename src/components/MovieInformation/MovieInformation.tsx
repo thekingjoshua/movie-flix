@@ -1,6 +1,6 @@
 import {Grid, Box, CircularProgress, styled, Typography, Rating, ButtonGroup, Button, Modal} from '@mui/material'
 import {Link, useParams} from 'react-router-dom'
-import { useGetMovieQuery, useGetRecommendationsQuery } from '../../services/TMDB'
+import { useGetListQuery, useGetMovieQuery, useGetRecommendationsQuery } from '../../services/TMDB'
 import {useTheme} from '@mui/material'
 import genreIcons from '../../assets/genres'
 import { useDispatch, useSelector } from 'react-redux'
@@ -32,10 +32,14 @@ type GenreKeys = keyof typeof genreIcons;
 const MovieInformation = () => {
   const {id} = useParams()
   const {user} = useSelector(userSelector)
+
   const {data, isFetching, error} = useGetMovieQuery(id)
   const {data: recommendations, isFetching: isFetchingRecommendations} = useGetRecommendationsQuery({list: '/recommendations', movie_id: id})
+  const {data: favoriteMovies} = useGetListQuery({listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
+
   const theme = useTheme()
   const dispatch = useDispatch()
+  
   const [open, setOpen] = useState<boolean>(false)
   const [isMovieFavorited, setIsMovieFavorited] = useState<boolean>(false)
   const [isMovieWatchListed, setIsMovieWatchListed] = useState<boolean>(false)
