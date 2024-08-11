@@ -99,6 +99,7 @@ const MovieInformation = () => {
     await axios.post(`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${import.meta.env.VITE_TMBD_KEY}&session_id=${localStorage.getItem('session_id')}`, {
       media_type: 'movie',
       media_id: id,
+      favourite: !isMovieFavorited
     })
 
     setIsMovieFavorited((prev) => !prev)
@@ -108,6 +109,7 @@ const MovieInformation = () => {
     await axios.post(`https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${import.meta.env.VITE_TMBD_KEY}&session_id=${localStorage.getItem('session_id')}`, {
       media_type: 'movie',
       media_id: id,
+      favourite: !isMovieWatchListed
     })
   }
 
