@@ -96,7 +96,7 @@ const MovieInformation = () => {
 
 
   const addToFavourites = async () => {
-    await axios.post(`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${import.meta.env.VITE_TMBD_KEY}&session_id=${localStorage.getItem('session_id')}0`, {
+    await axios.post(`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${import.meta.env.VITE_TMBD_KEY}&session_id=${localStorage.getItem('session_id')}`, {
       media_type: 'movie',
       media_id: id,
       favourite: !isMovieFavorited
@@ -105,7 +105,9 @@ const MovieInformation = () => {
     setIsMovieFavorited((prev) => !prev)
   }
 
-  const addToWatchList = async () => {}
+  const addToWatchList = async () => {
+    await axios.post(`https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${import.meta.env.VITE_TMBD_KEY}&session_id=${localStorage.getItem('session_id')}`)
+  }
 
 
   if(isFetching) {
