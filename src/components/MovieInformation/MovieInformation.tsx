@@ -111,6 +111,8 @@ const MovieInformation = () => {
       media_id: id,
       favourite: !isMovieWatchListed
     })
+
+    setIsMovieWatchListed((prev) => !prev)
   }
 
 
