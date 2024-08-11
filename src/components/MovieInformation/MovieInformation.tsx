@@ -38,6 +38,7 @@ const MovieInformation = () => {
   const dispatch = useDispatch()
   const [open, setOpen] = useState<boolean>(false)
   const [isMovieFavorited, setIsMovieFavorited] = useState<boolean>(false)
+  const [isMovieWatchListed, setIsMovieWatchListed] = useState<boolean>(false)
 
   console.log(data)
   console.log(recommendations)
@@ -93,8 +94,8 @@ const MovieInformation = () => {
     }
   }
 
-  const isMovieFavourited = false
-  const isMovieWatchListed = false
+  // const isMovieFavourited = false
+  // const isMovieWatchListed = false
 
   const addToFavourites = async () => {
     await axios.post(`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${import.meta.env.VITE_TMBD_KEY}&session_id=${localStorage.getItem('session_id')}0`, {
@@ -171,7 +172,7 @@ const MovieInformation = () => {
             </Grid>
             <Grid item xs={12} sm={6} style={classes.buttonsContainer}>
               <ButtonGroup size="small" variant="outlined">
-                <Button onClick={addToFavourites} endIcon={isMovieFavourited ? <FavoriteBorderOutlined /> : <Favorite />}>{isMovieFavourited ? 'Unfavourite' : 'Favourite'}</Button>
+                <Button onClick={addToFavourites} endIcon={isMovieFavorited ? <FavoriteBorderOutlined /> : <Favorite />}>{isMovieFavorited ? 'Unfavourite' : 'Favourite'}</Button>
                 <Button onClick={addToWatchList} endIcon={isMovieWatchListed ? <Remove /> : <PlusOne />}>Watchlist</Button>
                 <Button onClick={addToWatchList} endIcon={<ArrowBack />} sx={{borderColor: 'primary.main'}}> <Typography component={Link} to='/' color="inherit" variant="subtitle2" style={{textDecoration: 'none'}}>Back</Typography></Button>
                 </ButtonGroup>
