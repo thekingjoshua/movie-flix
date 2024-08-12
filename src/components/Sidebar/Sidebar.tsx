@@ -1,25 +1,17 @@
-// import {useEffect} from 'react'
-// import {Divider, List, ListItem, ListItemText, ListSubheader, ListItemIcon, Box, CircularProgress} from '@mui/material'
 import { Link } from 'react-router-dom'
 import {useTheme} from '@mui/material/styles'
 import { Dispatch, SetStateAction } from 'react'
 import { Divider, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from '@mui/material'
 
 import {useGetGenresQuery} from '../../services/TMDB'
-import Loader from '../Loader/Loader'
 import { selectGenreOrCategory } from '../../features/currentGenreOrCatergory'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import genreIcons from '../../assets/genres'
 
 type SidebarProps = {
     setMobileOpen: Dispatch<SetStateAction<boolean>>
-}
-type RootState = {
-    currentGenreOrCategory: {
-        genreIdOrCategoryName: string
-    }
 }
 
 const RED_LOGO = "https://fontmeme.com/permalink/240617/c6630a27ea06b4012057e33b52c7f45d.png"
@@ -32,7 +24,6 @@ const CATEGORIES = [
 ]
 
     const Sidebar = (props: SidebarProps) => {
-    const {genreIdOrCategoryName}  = useSelector((state: RootState) => state.currentGenreOrCategory)
     const theme = useTheme()
     const {data, isFetching} = useGetGenresQuery('')
     const dispatch = useDispatch();
