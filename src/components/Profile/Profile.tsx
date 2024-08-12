@@ -11,8 +11,6 @@ const Profile = () => {
   const {data: favoriteMovies, refetch: refetchFavourite} = useGetListQuery({listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
   const {data: watchlistMovies, refetch: refetchWatchlisted} = useGetListQuery({listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
 
-  console.log(favoriteMovies?.results.length)
-
   useEffect(() => {
     refetchFavourite()
     refetchWatchlisted()
