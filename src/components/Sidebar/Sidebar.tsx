@@ -23,7 +23,7 @@ const CATEGORIES = [
     {label: 'Upcoming', value: 'upcoming'}
 ]
 
-    const Sidebar = (props: SidebarProps) => {
+    const Sidebar = ({}: SidebarProps) => {
     const theme = useTheme()
     const {data, isFetching} = useGetGenresQuery('')
     const dispatch = useDispatch();
