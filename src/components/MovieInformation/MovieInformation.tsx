@@ -1,4 +1,4 @@
-import {Grid, Box, CircularProgress, styled, Typography, Rating, ButtonGroup, Button, Modal} from '@mui/material'
+import {Grid, Box, styled, Typography, Rating, ButtonGroup, Button, Modal} from '@mui/material'
 import {Link, useParams} from 'react-router-dom'
 import { useGetListQuery, useGetMovieQuery, useGetRecommendationsQuery } from '../../services/TMDB'
 import {useTheme} from '@mui/material'
