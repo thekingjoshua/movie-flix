@@ -34,7 +34,7 @@ const MovieInformation = () => {
   const {user} = useSelector(userSelector)
 
   const {data, isFetching, error} = useGetMovieQuery(id)
-  const {data: recommendations, isFetching: isFetchingRecommendations} = useGetRecommendationsQuery({list: '/recommendations', movie_id: id})
+  const {data: recommendations} = useGetRecommendationsQuery({list: '/recommendations', movie_id: id})
   const {data: favoriteMovies} = useGetListQuery({listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
   const {data: watchlistMovies} = useGetListQuery({listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
 
@@ -54,12 +54,6 @@ const MovieInformation = () => {
     setIsMovieWatchListed(!!watchlistMovies?.results?.find((movie: {id: number}) => movie?.id === data?.id))
 
   }, [watchlistMovies, data])
-
-  console.log(data)
-  console.log(recommendations)
-  console.log('okay')
-  console.log(favoriteMovies)
-  console.log(watchlistMovies)
 
   const classes = {
     containerSpaceAround: { 
