@@ -10,6 +10,7 @@ import MovieList from '../MovieList/MovieList'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { userSelector } from '../../features/auth'
+import Loader from '../Loader/Loader'
 
 
 
@@ -129,7 +130,7 @@ const MovieInformation = () => {
   if(isFetching) {
     return (
       <Box display='flex' justifyContent='center' alignItems='center'>
-        <CircularProgress size="8rem"/>
+        <Loader/>
       </Box>
     )
   }
